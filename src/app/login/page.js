@@ -9,7 +9,7 @@ const login = () =>{
                     <img className="w-full" src="/comida.png" />
                 </div>
             </div>
-            <div className="w-1/2  flex justify-center items-center">
+            <div className="w-1/2 flex justify-center items-center">
                 <LoginForm />
             </div>
         </div>
