@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
 
-const NavbarMenu = () => {
+ const NavbarMenu = () => {
     const [navbar, setNavbar] = useState(false);
 
     const handleNavbar = () => {
@@ -78,3 +78,4 @@ const NavbarMenu = () => {
     
 }
 
+export default NavbarMenu 
