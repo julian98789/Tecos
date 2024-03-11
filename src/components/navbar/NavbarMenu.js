@@ -78,4 +78,8 @@ const NavbarMenu = () => {
     
 }
 
+<<<<<<< HEAD
 export default NavbarMenu;
+=======
+export default NavbarMenu;
+>>>>>>> 7bb09b22abc0c8912f4ab2244965e851c30dee50
