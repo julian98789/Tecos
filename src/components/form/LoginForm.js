@@ -14,18 +14,18 @@ const LoginForm = () =>{
 
    
 
-    const enviarDatos = async (dataUser) =>{ 
+    const enviarDatos = async (dataUser) =>{   // Define una función asíncrona llamada "enviarDatos" que toma un objeto "dataUser" como parámetro.
 
-        const options = {
-            method: 'POST',
-            header: {
-                'Content-Type': 'application/json'
+        const options = {   // Define las opciones para la solicitud, incluyendo el método POST, las cabeceras y el cuerpo de la solicitud.
+            method: 'POST',  //// Define el método de la solicitud como POST.
+            header: {   // Define las cabeceras de la solicitud.
+                'Content-Type': 'application/json'   // Establece el tipo de contenido de la solicitud como JSON.
             },
-            body: JSON.stringify(dataUser)
+            body: JSON.stringify(dataUser)   // Convierte el objeto "dataUser" a una cadena JSON y lo asigna como cuerpo de la solicitud.
         }
-         await fetch("/api/login",options)
-        .then(res=>res.json())
-        .then(data=>console.log(data))
+         await fetch("/api/login",options)  // Realiza una solicitud HTTP POST a la ruta "/api/login" utilizando las opciones definidas.
+        .then(res=>res.json())    // Convierte la respuesta a formato JSON.
+        .then(data=>console.log(data))   // Imprime los datos de la respuesta en la consola.
     }
 
     return <form 
