@@ -1,13 +1,17 @@
-import NavbarMenu from "@/components/navbar/NavbarMenu.js"
+import NavbarMenu from "@/components/navbar/NavbarMenu.js";
 
-const page = () => {
-
-    return(
-        <div className="w-screen h-screen bg-slate-100 ">
-            <NavbarMenu/>
-            
-        </div>
+const Page = () => {
+  return (
+    <div className="relative">
+      <div
+        className="fixed top-0 left-0 w-full h-full bg-neutral-800 bg-cover bg-center bg-no-repeat bg-[url('/Fondo.jpg')] z-0"
+      ></div>
+      <div className="relative z-10">
+        <NavbarMenu />
         
-    )
-}
-export default page;
+      </div>
+    </div>
+  );
+};
+
+export default Page;
