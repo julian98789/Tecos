@@ -30,9 +30,11 @@ const LoginForm = () =>{
 
     return <form 
     onSubmit={handleSubmit(enviarDatos)}
-    className="w-full max-w-[350px] h-[350px] bg-neutral-800 rounded-xl flex flex-col justify-center items-center gap-2 ">
+    className="w-full max-w-[350px] h-auto bg-neutral-800 rounded-xl flex flex-col justify-center items-center gap-2 ">
 
-        <div className="text-4xl  text-white  font-bold pb-11">LOGIN</div>
+        <div className=" py-7">
+            <img className="h-28 w-auto " src="/tecos-logo-circular.svg" alt="your company"></img>
+        </div>
         <div className="flex flex-col gap-5">
             
 
@@ -50,7 +52,7 @@ const LoginForm = () =>{
            
         </div>
 
-        <button className="w-full h-9 mt-4 max-w-[260px] bg-orange-600 rounded text-white" type="submit">
+        <button className="w-full h-9 mt-4 max-w-[260px] bg-orange-600 rounded text-white mb-7" type="submit">
             Ingresar
         </button>
 
