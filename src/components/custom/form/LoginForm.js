@@ -52,7 +52,7 @@ const LoginForm = () =>{
            
         </div>
 
-        <button className="w-full h-9 mt-4 max-w-[260px] bg-orange-600 rounded text-white mb-7" type="submit">
+        <button className="w-full h-9 mt-4 max-w-[260px] bg-orange-600 rounded text-white mb-7 hover:transition transition-transform hover:scale-105 duration-400 shadow-2xl" type="submit">
             Ingresar
         </button>
 

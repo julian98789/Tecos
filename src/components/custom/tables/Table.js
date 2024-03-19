@@ -16,7 +16,7 @@ const Table = ({status,num}) =>{
             colorTextTable = "text-zinc-700";
             cursor = "cursor-pointer";
             transicion = "transition-transform , hover:scale-105";
-            route = "#"
+            route = "/menu" 
             break;
         case false:
             colorTable = "bg-zinc-500";

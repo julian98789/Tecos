@@ -30,7 +30,7 @@ const NavBarWeb = () =>{
   return (
     <div className="w-full h-full  hidden md:block">
       <div className="w-full h-full">
-         <nav className="w-full h-[65px]  bg-[rgb(17,17,16)] "> 
+         <nav className="w-full h-[65px]  bg-neutral-950 "> 
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
                         <div className="flex items-center">
@@ -41,8 +41,11 @@ const NavBarWeb = () =>{
                     
                     <div className="hidden md:block">
                             <div className="ml-4 flex items-center space-x-4">
-                                <a href="#" className="text-white hover:bg-red-700 hover:text-white rounded-lg p-2">
+                                <a href="/app/page" className="text-white hover:bg-red-700 hover:text-white rounded-lg p-2">
                                     Menu
+                                </a>
+                                <a href="#" className="text-white hover:bg-red-700 hover:text-white rounded-lg p-2">
+                                    Caja
                                 </a>
                                 <div className="relative inline-block text-left">
                                   <div>

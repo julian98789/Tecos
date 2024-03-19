@@ -4,8 +4,6 @@ import { IoIosArrowDown } from "react-icons/io";
 import EmployedFrom from "../custom/form/EmployedFrom";
 
 
-
-
 const NavbarMenu = () => {
         const [isOpenProduct, setIsOpenProduct] = useState(false);
         const [showEmployedFrom, setShowEmployedFrom] = useState(false);
@@ -49,6 +47,7 @@ const NavbarMenu = () => {
                                 <a href="/menu" className="text-white hover:bg-red-700 hover:text-white rounded-lg p-2">
                                     Menu
                                 </a>
+        
                                 <div className="relative inline-block text-left">
                                   <div>
                                   <button type="button" onClick={toggleDropdown} className="inline-flex justify-center items-center p-2 text-slate-100 hover:bg-red-700 rounded-lg">

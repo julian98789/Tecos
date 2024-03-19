@@ -1,21 +1,16 @@
-import NavbarMenu from "@/components/navbar/NavbarMenu";
 import RouteProtected from "@/middleware/RouteProtected";
 
-const page = () => {
+const Admin = () => {
  
     
-    return(
+    return <div className="relative">
        
-            <div className="relative">
-              <div
-                className="fixed top-0 left-0 w-full h-full bg-neutral-800 bg-cover bg-center bg-no-repeat bg-[url('/Fondo.jpg')] z-0"
-              ></div>
-              <div className="relative z-10">
-                <NavbarMenu />
-                
+              <div className="w-full h-[calc(100vh-60px)] flex justify-center items-center bg-cover bg-center bg-no-repeat  bg-[url('/Fondo.jpg')] p-9 " >       
+               
               </div>
+             
             </div>
         
-    )
+    
 }
-export default page;
+export default Admin;

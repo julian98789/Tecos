@@ -16,13 +16,10 @@ export default function RootLayout({ children }) {
 		<html lang="es">
 
 			<body className={inter.className}>
-				<header>
-					<NavBarWeb/>
-					<NavBarMobile/>
-				</header>
-				<main>
+				
+				
 					{children}
-				</main>
+				
 				
 			</body>
 		</html>
