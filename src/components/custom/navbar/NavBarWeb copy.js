@@ -1,9 +1,7 @@
 'use client'
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import EmployedFrom from "../form/EmployedFrom";
-
-
+import EmployedFrom from "../custom/form/EmployedFrom";
 
 
 const NavbarMenu = () => {
@@ -46,9 +44,10 @@ const NavbarMenu = () => {
                     
                     <div className="hidden md:block">
                             <div className="ml-4 flex items-center space-x-4">
-                                <a href="/" className="text-white hover:bg-red-700 hover:text-white rounded-lg p-2">
+                                <a href="/menu" className="text-white hover:bg-red-700 hover:text-white rounded-lg p-2">
                                     Menu
                                 </a>
+        
                                 <div className="relative inline-block text-left">
                                   <div>
                                   <button type="button" onClick={toggleDropdown} className="inline-flex justify-center items-center p-2 text-slate-100 hover:bg-red-700 rounded-lg">
@@ -111,4 +110,3 @@ const NavbarMenu = () => {
 }
 
 export default NavbarMenu;
-

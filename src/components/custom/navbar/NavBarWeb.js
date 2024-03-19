@@ -1,20 +1,14 @@
 'use client'
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import EmployedFrom from "../form/EmployedFrom";
 
+const NavBarWeb = () =>{
 
-
-
-const NavbarMenu = () => {
-        const [isOpenProduct, setIsOpenProduct] = useState(false);
-        const [showEmployedFrom, setShowEmployedFrom] = useState(false);
+  const [isOpenProduct, setIsOpenProduct] = useState(false);
+        
         const [isOpen, setIsOpen] = useState(false);
       
-        const openEmployedFrom = ()=>{
-            setShowEmployedFrom(!showEmployedFrom);
-            closeDropdown();
-        }
+        
 
         const toggleDropdownProduct = () => {
           setIsOpenProduct(!isOpenProduct);
@@ -31,11 +25,12 @@ const NavbarMenu = () => {
         const closeDropdown = () => {
           setIsOpen(false);
         };
-    
+  
 
-    return (
-        
-            <nav className="w-full h-[65px]  bg-[rgba(17,17,16,0.92)] rounded-sm"> 
+  return (
+    <div className="w-full h-full  hidden md:block">
+      <div className="w-full h-full">
+         <nav className="w-full h-[65px]  bg-neutral-950 "> 
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
                         <div className="flex items-center">
@@ -46,8 +41,11 @@ const NavbarMenu = () => {
                     
                     <div className="hidden md:block">
                             <div className="ml-4 flex items-center space-x-4">
-                                <a href="/" className="text-white hover:bg-red-700 hover:text-white rounded-lg p-2">
+                                <a href="/app/page" className="text-white hover:bg-red-700 hover:text-white rounded-lg p-2">
                                     Menu
+                                </a>
+                                <a href="#" className="text-white hover:bg-red-700 hover:text-white rounded-lg p-2">
+                                    Caja
                                 </a>
                                 <div className="relative inline-block text-left">
                                   <div>
@@ -62,7 +60,7 @@ const NavbarMenu = () => {
                                  onClick={closeDropdown}>
                              {/* Contenido del dropdown */}
                             <div className="py-1">
-                                <a href="#" onClick={openEmployedFrom} className="block px-4 py-2 text-sm text-slate-100 hover:bg-red-700" >
+                                <a href="#"  className="block px-4 py-2 text-sm text-slate-100 hover:bg-red-700" >
                                   Agregar Empleados</a>
                                 <a href="#" className="block px-4 py-2 text-sm text-slate-100 hover:bg-red-700">
                                   Actualizar o Eliminar </a>
@@ -101,14 +99,12 @@ const NavbarMenu = () => {
                         
                     </div>
                 </div>
-                <div className="flex justify-center items-center pt-10 ">
-                    {showEmployedFrom && <EmployedFrom/>}
-                </div>
+
             </nav>
-       
-    );
-    
+      </div>
+    </div>
+  )
+
 }
 
-export default NavbarMenu;
-
+export default NavBarWeb
