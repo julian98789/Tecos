@@ -4,7 +4,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { CgPassword } from "react-icons/cg";
 import { useForm } from "react-hook-form";
 import { FaRegUser } from "react-icons/fa";
-import { CgCloseR } from "react-icons/cg";
+
 
  
 const EmployedFrom = () =>{
@@ -41,14 +41,18 @@ const EmployedFrom = () =>{
     <div className="flex justify-center items-center flex-row gap-5">
     
         <div className=" relative">
-            <input {...register("name")} className="bg-[rgba(141,143,138,0.82)] border rounded w-[240px] outline-none h-9  pl-10 placeholder:text-slate-300"  placeholder="Ingrese su nombre"/>
+            <input {...register("name")} {...register("name",{ required: true })}className="bg-[rgba(141,143,138,0.82)] border rounded w-[240px] outline-none h-9  pl-10 placeholder:text-slate-300"  placeholder="Ingrese su nombre"/>
             <FaRegUser className="w-7 absolute top-[10px] left-1 text-slate-800"/>
+            {errors.name && <span className="text-[#ff0000] text-xs ">Este espacio es requerido</span>}
         </div >
+        
         <div className=" relative ">
        
-            <input {...register("lastname")} className="bg-[rgba(141,143,138,0.82)]  border rounded w-[240px] outline-none h-9  pl-10 placeholder:text-slate-300" placeholder="Ingrese su apellido"/>
+            <input {...register("lastname")} {...register("lastname",{ required: true })} className="bg-[rgba(141,143,138,0.82)]  border rounded w-[240px] outline-none h-9  pl-10 placeholder:text-slate-300" placeholder="Ingrese su apellido"/>
             <FaRegUser className="w-7 absolute top-[10px] left-1 text-slate-800"/>
+            {errors.lastname && <span className="text-[#ff0000] text-xs ">Este espacio es requerido</span>}
         </div>
+        
 
     </div>
     </div>
@@ -61,10 +65,11 @@ const EmployedFrom = () =>{
     <div className="flex justify-items-start flex-row gap-5">
     
         <div className=" relative ">
-            <input {...register("id")} className="bg-[rgba(141,143,138,0.82)] border rounded w-[240px] outline-none h-9  pl-10 placeholder:text-slate-300 text-start"  placeholder="Ingrese identificacion"/>
+            <input {...register("id")} {...register("id",{ required: true })} className="bg-[rgba(141,143,138,0.82)] border rounded w-[240px] outline-none h-9  pl-10 placeholder:text-slate-300 text-start"  placeholder="Ingrese identificacion"/>
             <HiOutlineIdentification className="w-7 absolute top-[10px] left-1 text-slate-800"/>
-            
+            {errors.id && <span className="text-[#ff0000] text-xs ">Este espacio es requerido</span>}
         </div >
+        
     </div>
     </div>
 
@@ -75,10 +80,11 @@ const EmployedFrom = () =>{
     <div className="flex justify-items-start flex-row gap-5">
     
         <div className=" relative ">
-            <input {...register("email")} className="bg-[rgba(141,143,138,0.82)] border  rounded w-[240px] outline-none h-9  pl-10 placeholder:text-slate-300 text-start"  placeholder="Ingrese Email"/>
+            <input {...register("email")} {...register("email",{ required: true })} className="bg-[rgba(141,143,138,0.82)] border  rounded w-[240px] outline-none h-9  pl-10 placeholder:text-slate-300 text-start"  placeholder="Ingrese Email"/>
             <MdOutlineEmail className="w-7 absolute top-[10px] left-1 text-slate-800"/>
-
+            {errors.email && <span className="text-[#ff0000] text-xs ">Este espacio es requerido</span>}
         </div >
+        
     </div>
     </div>
     </div>
@@ -93,14 +99,18 @@ const EmployedFrom = () =>{
     <div className="flex justify-center items-center flex-row gap-5">
     
         <div className=" relative">
-            <input {...register("pass")} className="bg-[rgba(141,143,138,0.82)] border rounded w-[240px] outline-none h-9  pl-10 placeholder:text-slate-300"  placeholder="Ingrese su contraña"/>
+            <input {...register("pass")} {...register("pass",{ required: true })} className="bg-[rgba(141,143,138,0.82)] border rounded w-[240px] outline-none h-9  pl-10 placeholder:text-slate-300"  placeholder="Ingrese su contraña"/>
             <CgPassword className="w-7 absolute top-[10px] left-1 text-slate-800"/>
+            {errors.pass && <span className="text-[#ff0000] text-xs ">Este espacio es requerido</span>}
         </div >
+        
         <div className=" relative ">
        
-            <input {...register("ConfrimPass")} className="bg-[rgba(141,143,138,0.82)]  border rounded w-[240px] outline-none h-9  pl-8 placeholder:text-slate-300" placeholder="Confirme su contraseña"/>
+            <input {...register("ConfrimPass")} {...register("ConfrimPass",{ required: true })} className="bg-[rgba(141,143,138,0.82)]  border rounded w-[240px] outline-none h-9  pl-8 placeholder:text-slate-300" placeholder="Confirme su contraseña"/>
             <CgPassword className="w-7 absolute top-[10px] left-1 text-slate-800"/>
+            {errors.ConfrimPass && <span className="text-[#ff0000] text-xs ">Este espacio es requerido</span>}
         </div>
+       
 
     </div>
     </div>
