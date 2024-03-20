@@ -1,16 +1,38 @@
 'use client'
 import Table from "@/components/custom/tables/Table.js";
 import NavBarCliente from "@/components/custom/navbar/NavBarCliente";
+import useStore from "@/hook/useSession.js";
+import { useEffect, useState } from "react";
+
+
 export default function Home() {
+
+	const {logged, user, login, logout} = useStore()
+	const [val , setVal] = useState(null)
+
+	
+
+	useEffect(()=>{
+
+		console.log(logged)
+		console.log(user)
+	
+	
+	},[logged,user])
+
+	const myClick = () =>{
+		
+	}
+	
 	return (
-		<div className="w-full h-screen flex justify-center items-center bg-repeat bg-[url('/Fondo.jpg')] bg-top" >
+		<div className="w-full h-screen flex justify-center items-center bg-cover  bg-[url('/Fondo.jpg')] bg-top" >
 			<div className="w-full h-full bg-[rgba(38,38,38,.4)] flex flex-col">
 				<NavBarCliente/>
 
 				<div className="w-full min-h-[calc(100%-60px)]">
 					<div className="w-full min-h-full flex justify-center items-center ">
 						<div className=" gap-4   grid   grid-cols-2 sm:grid-cols-4 lg:gap-6 xl:gap-8">
-							<Table status={true} num={1} href="/login"/>
+							<Table status={true} num={1} />
 							<Table status={true} num={2}/>
 							<Table status={true} num={3}/>
 							<Table status={true} num={4}/>
@@ -19,7 +41,11 @@ export default function Home() {
 							<Table status={true} num={7}/>
 							<Table status={true} num={8}/>
 							
+					
+							
+							
 						</div>
+
 					</div>
 				</div>
 			</div>

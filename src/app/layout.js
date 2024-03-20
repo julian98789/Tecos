@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBarWeb from "@/components/custom/navbar/NavBarWeb";
 import NavBarMobile from "@/components/custom/navbar/NavBarMobile";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -17,9 +18,9 @@ export default function RootLayout({ children }) {
 
 			<body className={inter.className}>
 				
-				
+		
 					{children}
-				
+			
 				
 			</body>
 		</html>

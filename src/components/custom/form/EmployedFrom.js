@@ -8,6 +8,7 @@ import { CgCloseR } from "react-icons/cg";
 
  
 const EmployedFrom = () =>{
+    
 
     const {
         register,
@@ -74,7 +75,7 @@ const EmployedFrom = () =>{
     <div className="flex justify-items-start flex-row gap-5">
     
         <div className=" relative ">
-            <input {...register("email")} className="bg-[rgba(141,143,138,0.82)] border  rounded w-[240px] outline-none h-9  pl-10 "/>
+            <input {...register("email")} className="bg-[rgba(141,143,138,0.82)] border  rounded w-[240px] outline-none h-9  pl-10 placeholder:text-slate-300 text-start"  placeholder="Ingrese Email"/>
             <MdOutlineEmail className="w-7 absolute top-[10px] left-1 text-slate-800"/>
 
         </div >
@@ -83,10 +84,10 @@ const EmployedFrom = () =>{
     </div>
 
     <div className="w-[500px] flex flex-col space-y-3 ">
-    <div className="text-white text-start ">Password</div>
+    <div className="text-white text-start ">Contraeña</div>
     <div className="flex flex-row gap-36">
-    <div className="text-[rgb(141,143,138)] text-start ">Input Password</div>
-    <div className="text-[rgb(141,143,138)] text-start ">Confirm Password</div>
+    <div className="text-[rgb(141,143,138)] text-start ">Ingresar Contraseña</div>
+    <div className="text-[rgb(141,143,138)] text-start ">Confirmar Contraseña</div>
     </div>
 
     <div className="flex justify-center items-center flex-row gap-5">
@@ -113,7 +114,6 @@ const EmployedFrom = () =>{
         
          <option value="admin">Administrador</option>
          <option value="cajero">Cajero</option>
-         <option value="chef">Chef</option>
        </select>
        </div>
    
