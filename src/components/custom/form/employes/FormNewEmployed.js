@@ -4,10 +4,11 @@ import { MdOutlineEmail } from "react-icons/md";
 import { CgPassword } from "react-icons/cg";
 import { useForm } from "react-hook-form";
 import { FaRegUser } from "react-icons/fa";
+import Link from "next/link";
 
 
  
-const EmployedFrom = () =>{
+const FormNewEmployed = () =>{
     
 
     const {
@@ -26,7 +27,7 @@ const EmployedFrom = () =>{
     }
 
 
-    return  (  <form className="bg-[rgba(17,17,16,0.92)] border  rounded-2xl p-8 flex justify-center items-center flex-col space-y-10 mt-auto mb-auto pb-16 w-[700px]" onSubmit={handleSubmit(enviarDatos)}>
+    return  (  <form className=" bg-[rgba(17,17,16,0.92)] border  rounded-2xl p-8 flex justify-center items-center flex-col space-y-10 mt-auto mb-auto pb-16 w-[700px]" onSubmit={handleSubmit(enviarDatos)}>
         
             
     <div className="text-center text-2xl text-white pt-3">Formulario de registro de empleados</div>
@@ -135,8 +136,10 @@ const EmployedFrom = () =>{
             <button type="submit" className="bg-green-600 rounded-xl w-[240px] outline-none h-9  pl-5 hover:bg-green-700 text-white">Registrar</button>
             </div>
 
-            <div className="relative ">
-            <button className=" bg-red-600  rounded-xl w-[240px] outline-none h-9  pl-5 hover:bg-red-700 text-white ">Cancelar</button>
+            <div className="relative">
+                
+                    <button className=" bg-red-600  rounded-xl w-[240px] outline-none h-9  pl-5 hover:bg-red-700 text-white " href="/admin">Cancelar</button>
+                
             </div>
 
         </div>
@@ -145,4 +148,4 @@ const EmployedFrom = () =>{
 
   )
 }
-export default EmployedFrom;
+export default FormNewEmployed;

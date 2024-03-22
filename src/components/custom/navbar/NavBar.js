@@ -6,7 +6,7 @@ import {
     SheetContent,
     SheetTrigger,
   } from "@/components/ui/sheet"
-import MenuBox from "../menu/MenuBox";
+import Menu from "../menu/Menu";
 import { Macondo_Swash_Caps } from "next/font/google"
 
 
@@ -21,7 +21,7 @@ const Navbar = () =>{
         
             <Sheet>
 
-                <div className="w-full h-[60px] absolute top-0 left-0 bg-[rgba(10,10,10,.8)] flex flex-row justify-between items-center text-neutral-50 px-5">
+                <div className="w-full h-[60px] fixed top-0 left-0 bg-neutral-900 flex flex-row justify-between items-center text-neutral-50 px-5">
                     <div className="w-[60px] h-[60px]">
                         <Image src='/tecos-logo-circular.svg' width={60} height={60} alt=""/>
                     </div>
@@ -34,7 +34,7 @@ const Navbar = () =>{
                 </div>
 
                 <SheetContent>
-                    <MenuBox/>
+                    <Menu/>
                 </SheetContent>
             </Sheet>
 

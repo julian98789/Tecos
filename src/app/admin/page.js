@@ -1,26 +1,26 @@
 import RouteProtected from "@/middleware/RouteProtected";
-import NavBarWeb from "@/components/custom/navbar/NavBarWeb";
-import OpAdmin from "@/components/custom/admin/opAdmin";
+import Navbar from "@/components/custom/navbar/NavBar";
+import Employes from "@/components/custom/Employee/Employes";
+import TableEmployes from "@/components/custom/dataTable/TableEmployes";
 
 const Admin = () => {
- 
-    
+
     return (
-   <RouteProtected>
-              <div className="w-full min-h-full flex justify-center items-center bg-cover  bg-top bg-[url('/Fondo.jpg')] " >
-                <div className="w-full h-full bg-[rgba(38,38,38,.4)] flex flex-col ">
-                  <div className="w-full flex flex-col">
-                    <NavBarWeb />
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <OpAdmin />
-                  </div>
-                  
-                </div>
-              </div>
-   </RouteProtected>
       
-        
-           )
+      
+      <>
+        <Navbar/>
+        <div className="w-full h-full bg-[rgba(23,23,23,.5)] overflow-y-auto   py-[70px]">
+          
+          <Employes/>
+
+          
+
+        </div>
+      </>
+      
+      
+      
+      )
 }
 export default Admin;

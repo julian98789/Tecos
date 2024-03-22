@@ -15,13 +15,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="es">
-
-			<body className={inter.className}>
-				
-		
+			<body className={`${inter.className} w-full h-screen`}>
+				<main className="w-full h-full  bg-cover  bg-top bg-[url('/Fondo.jpg')]">
 					{children}
-			
-				
+				</main>
 			</body>
 		</html>
 	);
