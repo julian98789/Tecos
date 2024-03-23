@@ -1,5 +1,5 @@
 'use client'
-import CpMenu from "@/components/custom/MenuOption/MenuOption"
+import CpMenu from "@/components/custom/menu/MenuOption/MenuOption"
 import NavBarCliente from "@/components/custom/navbar/NavBarCliente"
 const PgMenu = () =>{
     return <div className="w-full h-screen flex justify-center items-center bg-repeat bg-[url('/Fondo.jpg')] bg-top" >

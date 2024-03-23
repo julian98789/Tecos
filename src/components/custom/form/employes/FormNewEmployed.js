@@ -33,7 +33,6 @@ const FormNewEmployed = () =>{
     <div className="text-center text-2xl text-white pt-3">Formulario de registro de empleados</div>
     
     <div className="w-[500px] flex flex-col space-y-3 ">
-    <div className="text-white text-start ">Nombre del empleado</div>
     <div className="flex flex-row gap-52">
     <div className="text-[rgb(141,143,138)] text-start ">Nombre</div>
     <div className="text-[rgb(141,143,138)] text-start ">Apellido</div>
@@ -60,7 +59,6 @@ const FormNewEmployed = () =>{
 
     <div className="w-[500px] flex flex-row gap-5">
     <div className="w-[250px] flex flex-col space-y-3 ">
-    <div className="text-white text-start ">Indentificacion del empleado</div>
     <div className="text-[rgba(141,143,138,255)] text-start ">C.C</div>
 
     <div className="flex justify-items-start flex-row gap-5">
@@ -75,7 +73,6 @@ const FormNewEmployed = () =>{
     </div>
 
     <div className="w-[250px] flex flex-col space-y-3  ">
-    <div className="text-white text-start ">Correo Electronico</div>
     <div className="text-[rgba(141,143,138,255)] text-start ">Email</div>
 
     <div className="flex justify-items-start flex-row gap-5">
@@ -91,7 +88,6 @@ const FormNewEmployed = () =>{
     </div>
 
     <div className="w-[500px] flex flex-col space-y-3 ">
-    <div className="text-white text-start ">Contraeña</div>
     <div className="flex flex-row gap-36">
     <div className="text-[rgb(141,143,138)] text-start ">Ingresar Contraseña</div>
     <div className="text-[rgb(141,143,138)] text-start ">Confirmar Contraseña</div>
@@ -117,7 +113,6 @@ const FormNewEmployed = () =>{
     </div>
 
     <div className="w-[500px] flex flex-col space-y-3  ">
-    <div className="text-white text-start ">Cargo del empleado</div>
     <div className="text-[rgba(141,143,138,255)] text-start ">Seleciona un rol</div>
 
         <div className=" relative ">
