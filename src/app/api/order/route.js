@@ -3,10 +3,12 @@ import { insertOrder, selectOrder, updateOrder, deleteOrder } from "../model/ord
 
 export async function  POST(req, res) {
     try {
-        const result  =  insertOrder() 
+        //let  datos = await req.formData()
+        const datos = await req.json()
+        const result  =  await insertOrder(datos) 
         return NextResponse.json(result) 
     } catch (error) {
-        console.log(error) 
+        return NextResponse.json(error) 
     }
 }
 

@@ -3,11 +3,11 @@ import { insertProducts, selectProducts, updateProducts, deleteProducts } from "
 
 export async function  POST(req, res) {
     try {
-        let  datos = await req.json()
-        const result  =  insertProducts(datos) 
+        //let  datos = await req.formData()
+        const datos = await req.json()
+        const result  =  await insertProducts(datos) 
         return NextResponse.json(result) 
     } catch (error) {
-        console.log("-----")
         return NextResponse.json(error) 
     }
 }

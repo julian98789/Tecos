@@ -1,9 +1,26 @@
 import pool from "@/db/MysqlConection";
 
-export const insertSales = () =>{
+export const insertSales = async  (data) =>{
+    let result =true;
+    let error = false
+    try {
+        const {fecha, valor_total, cliente  } = data; 
+        let sql = `INSERT INTO  ventas (fecha, valor_total, cliente ) VALUE ('${fecha}',  '${valor_total}', '${cliente}' )`;   
+        await pool.query(sql);
+        
+    } catch (err) {
+        result= false;
+        error = {
+            "sql" : sql,
+            "description": err
+        }
+        console.log(error)  
+    }
     let response = {
         "preocess": 'insert sales',
-        "status": true
+        "status": true,
+        "result": result,
+        "error": error
     }
     return response
 }
