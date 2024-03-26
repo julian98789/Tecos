@@ -107,10 +107,10 @@ const FormNewEmployed = () =>{
     <div className="text-[rgb(247,247,247)] text-start ">Seleciona un rol</div>
 
         <div className=" flex items-center ">
-      <select id="countries" className=" border  text-sm rounded-lg  w-full p-2.5 bg-neutral-300 ">
+      <select  id="countries" className=" border  text-sm rounded-lg  w-full p-2.5 bg-neutral-300 ">
         
-         <option value="admin" className="">Administrador</option>
-         <option value="cajero">Cajero</option>
+         <option {...register("rolValue")} value="admin" className="">Administrador</option>
+         <option {...register("rolValue")} value="cajero">Cajero</option>
        </select>
        </div>
    
