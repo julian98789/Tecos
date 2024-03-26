@@ -49,6 +49,28 @@ export const selectUser = async () =>{
     return response
 }
 
+export const selectUserId = async (cedula) =>{
+    let result =false;
+    let error = false
+    try{
+        let sql = `SELECT * FROM usuarios WHERE  cedula  = '${cedula}'`
+        let [rows] = await pool.query(sql);
+        result =rows
+    }catch (err){
+        error = {
+            "sql" : sql,
+            "description": err
+        }
+        console.log(error)  
+    }
+    let response = {
+        "preocess": 'select user',
+        "status": true,
+        "result": result
+
+    }
+    return response
+}
 
 export const updateUser = () =>{
     let response = {

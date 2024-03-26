@@ -51,6 +51,29 @@ export const selectSales = async () =>{
     return response
 }
 
+export const selectSalesId = async (id) =>{
+    let result =false;
+    let error = false
+    try{
+        let sql = `SELECT * FROM ventas WHERE  id  = '${id}'`
+        let [rows] = await pool.query(sql);
+        result =rows
+    }catch (err){
+        error = {
+            "sql" : sql,
+            "description": err
+        }
+        console.log(error)  
+    }
+    let response = {
+        "preocess": 'select sales',
+        "status": true,
+        "result": result
+
+    }
+    return response
+}
+
 
 export const updateSales = () =>{
     let response = {
