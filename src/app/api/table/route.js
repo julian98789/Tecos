@@ -3,10 +3,12 @@ import { insertTable, selectTable, updateTable, deleteTable } from "../model/tab
 
 export async function  POST(req, res) {
     try {
-        const result  =  insertTable() 
+        //let  datos = await req.formData()
+        const datos = await req.json()
+        const result  =  await insertTable(datos) 
         return NextResponse.json(result) 
     } catch (error) {
-        console.log(error) 
+        return NextResponse.json(error) 
     }
 }
 

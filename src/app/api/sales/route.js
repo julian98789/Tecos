@@ -3,16 +3,19 @@ import { insertSales, selectSales, updateSales, deleteSales } from "../model/sal
 
 export async function  POST(req, res) {
     try {
-        const result  =  insertSales() 
+        //let  datos = await req.formData()
+        const datos = await req.json()
+        const result  =  await insertSales(datos) 
         return NextResponse.json(result) 
     } catch (error) {
-        console.log(error) 
+        return NextResponse.json(error) 
     }
 }
 
 export async function  GET(req, res) {
     try {
-        const result  =  selectSales() 
+        const result  = await  selectSales() 
+        
         return NextResponse.json(result) 
     } catch (error) {
         console.log(error) 

@@ -25,10 +25,27 @@ export const insertProducts = async  (data) =>{
     return response
 }
 
-export const selectProducts = () =>{
+export const selectProducts = async () =>{
+    let result =true;
+    let error = false
+    let sql = 'SELECT  * FROM  productos'
+    let [rows] = await pool.query(sql);
+    try{
+        
+        console.log(rows)
+    }catch (err){
+        result= false;
+        error = {
+            "sql" : sql,
+            "description": err
+        }
+        console.log(error)  
+    }
     let response = {
         "preocess": 'select products',
-        "status": true
+        "status": true,
+        "result": result,
+        "result": rows
     }
     return response
 }

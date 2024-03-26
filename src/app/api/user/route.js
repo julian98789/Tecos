@@ -3,10 +3,12 @@ import { insertUser, selectUser, updateUser, deleteUser } from "../model/user";
 
 export async function  POST(req, res) {
     try {
-        const result  =  insertUser() 
+        //let  datos = await req.formData()
+        const datos = await req.json()
+        const result  =  await insertUser(datos) 
         return NextResponse.json(result) 
     } catch (error) {
-        console.log(error) 
+        return NextResponse.json(error) 
     }
 }
 
