@@ -51,7 +51,7 @@ const FormNewEmployed = () =>{
 
     <div className="w-[500px] flex flex-col space-y-2">
     <div className="flex flex-row gap-28">
-    <div className="text-[rgb(247,247,247)] text-start ">Ingresar Contraseña</div>
+    <div className="text-[rgb(247,247,247)] text-start ">Identificacion</div>
     <div className="text-[rgb(247,247,247)] text-start ">Correo</div>
     </div>
 

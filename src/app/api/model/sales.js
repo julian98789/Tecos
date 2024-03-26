@@ -28,15 +28,14 @@ export const insertSales = async  (data) =>{
 }
 
 export const selectSales = async () =>{
-    let result =true;
+    let result =false;
     let error = false
-    let sql = 'SELECT  * FROM  ventas'
-    let [rows] = await pool.query(sql);
+   
     try{
-        
-        console.log(rows)
+        let sql = 'SELECT  * FROM  ventas'
+        let [rows] = await pool.query(sql);
+        result =rows
     }catch (err){
-        result= false;
         error = {
             "sql" : sql,
             "description": err
@@ -46,8 +45,8 @@ export const selectSales = async () =>{
     let response = {
         "preocess": 'select sales',
         "status": true,
-        "result": result,
-        "result": rows
+        "result": result
+
     }
     return response
 }

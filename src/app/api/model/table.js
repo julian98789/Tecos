@@ -26,15 +26,14 @@ export const insertTable = async  (data) =>{
 }
 
 export const selectTable = async () =>{
-    let result =true;
+    let result =false;
     let error = false
-    let sql = 'SELECT  * FROM  mesa'
-    let [rows] = await pool.query(sql);
+   
     try{
-        
-        console.log(rows)
+        let sql = 'SELECT  * FROM mesa'
+        let [rows] = await pool.query(sql);
+        result =rows
     }catch (err){
-        result= false;
         error = {
             "sql" : sql,
             "description": err
@@ -44,8 +43,8 @@ export const selectTable = async () =>{
     let response = {
         "preocess": 'select table',
         "status": true,
-        "result": result,
-        "result": rows
+        "result": result
+
     }
     return response
 }

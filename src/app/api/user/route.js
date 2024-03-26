@@ -14,7 +14,7 @@ export async function  POST(req, res) {
 
 export async function  GET(req, res) {
     try {
-        const result  =  selectUser() 
+        const result  = await selectUser() 
         return NextResponse.json(result) 
     } catch (error) {
         console.log(error) 
