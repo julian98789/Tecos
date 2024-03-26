@@ -10,7 +10,7 @@ const Admin = () => {
       
       <>
         <Navbar/>
-        <div className="w-full h-full bg-[rgba(23,23,23,.5)] overflow-y-auto   py-[70px]">
+        <div className="w-full h-full bg-[rgba(23,23,23,.5)] overflow-y-auto py-[70px]">
           
           <Employes/>
 

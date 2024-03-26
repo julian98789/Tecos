@@ -14,12 +14,12 @@ const Employes = () =>{
     useState
     //useState cual es el usuario?
     return ( 
-        <div className="w-full rounded-md shadow-sm px-16 py-5 ">
+        <div className="w-full rounded-md shadow-sm px-16  ">
             <button type="button" onClick={abrirFormulario} className="w-28 h-11 text-sm font-medium text-neutral-100 bg-neutral-900 rounded-lg hover:bg-red-700">
                     Nuevo empleado 
             </button>
             {mostrarFormulario ? (
-             <div className="flex flex-raw justify-center mt-6">
+             <div className="flex flex-raw justify-center ">
                 <FormNewEmployed onClose={() => setMostrarFormulario(false)} />
              </div>
             
