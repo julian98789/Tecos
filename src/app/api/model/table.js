@@ -49,6 +49,28 @@ export const selectTable = async () =>{
     return response
 }
 
+export const selectTableId = async (id) =>{
+    let result =false;
+    let error = false
+    try{
+        let sql = `SELECT * FROM mesa WHERE  id  = '${id}'`
+        let [rows] = await pool.query(sql);
+        result =rows
+    }catch (err){
+        error = {
+            "sql" : sql,
+            "description": err
+        }
+        console.log(error)  
+    }
+    let response = {
+        "preocess": 'select table',
+        "status": true,
+        "result": result
+
+    }
+    return response
+}
 
 export const updateTable = () =>{
     let response = {
@@ -58,10 +80,28 @@ export const updateTable = () =>{
     return response
 }
 
-export const deleteTable = () =>{
-    let response = { 
-        "preocess": 'delete table',
-        "status": true
+export const deleteTable = async (id) =>{
+    console.log(id)  
+    let status = false;
+    let error = false
+    let sql = `DELETE FROM mesa WHERE  id  = '${id}'`
+
+    try{
+        await pool.query(sql);
+        status = true
+    }catch (err){
+        error = {
+            "sql" : sql,
+            "description": err
+        }
     }
-    return response
+    
+    let response = {
+        "preocess": 'delete table',
+        "status": status,
+        "error": error
+    }
+    
+    return response;
 }
+

@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
-import { selectProductsId, deleteProducts } from "../../model/products";
+import { selectTableId, deleteTable } from "../../model/table";
 
 export async function  GET(req, {params}) {
     try {
-        let result  = await selectProductsId(params.id); 
+        let result  = await selectTableId(params.id); 
         return NextResponse.json(result) 
     } catch (error) {
         console.log(error) 
@@ -12,9 +12,9 @@ export async function  GET(req, {params}) {
 
 export async function  DELETE(req, {params}) {
     try {
-        const result  = await deleteProducts(params.id); 
+        const result  = await deleteTable(params.id) 
         return NextResponse.json(result) 
     } catch (error) {
         console.log(error) 
-    } 
+    }
 }

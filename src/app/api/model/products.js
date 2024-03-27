@@ -49,6 +49,29 @@ export const selectProducts = async () =>{
     return response
 }
 
+export const selectProductsId = async (id) =>{
+    let result =false;
+    let error = false
+    try{
+        let sql = `SELECT * FROM productos WHERE  id  = '${id}'`
+        let [rows] = await pool.query(sql);
+        result =rows
+    }catch (err){
+        error = {
+            "sql" : sql,
+            "description": err
+        }
+        console.log(error)  
+    }
+    let response = {
+        "preocess": 'select products',
+        "status": true,
+        "result": result
+
+    }
+    return response
+}
+
 
 export const updateProducts = () =>{
     let response = {
@@ -58,27 +81,32 @@ export const updateProducts = () =>{
     return response
 }
 
-export const deleteProducts = () =>{
-    let response = { 
-        "preocess": 'delete products',
-        "status": true
+export const deleteProducts = async (id) =>{
+    console.log(id)
+    
+    let status = false;
+    let error = false
+    let sql = `DELETE FROM productos WHERE  id  = '${id}'`
+    try{
+        
+        await pool.query(sql);
+        status = true
+    }catch (err){
+        error = {
+            "sql" : sql,
+            "description": err
+        } 
     }
-    return response
+    
+    let response = {
+        "preocess": 'delete products',
+        "status": status,
+        "error": error
+    }
+    
+    return response;
 }
 
 
 
 
-/*
-insert 
-select 
-Id
-all
-
-update 
-all
-parcial
-
-delete
-
-*/
