@@ -80,10 +80,28 @@ export const updateTable = () =>{
     return response
 }
 
-export const deleteTable = () =>{
-    let response = { 
-        "preocess": 'delete table',
-        "status": true
+export const deleteTable = async (id) =>{
+    console.log(id)  
+    let status = false;
+    let error = false
+    let sql = `DELETE FROM mesa WHERE  id  = '${id}'`
+
+    try{
+        await pool.query(sql);
+        status = true
+    }catch (err){
+        error = {
+            "sql" : sql,
+            "description": err
+        }
     }
-    return response
+    
+    let response = {
+        "preocess": 'delete table',
+        "status": status,
+        "error": error
+    }
+    
+    return response;
 }
+

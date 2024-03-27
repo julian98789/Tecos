@@ -75,18 +75,54 @@ export const selectOrderId = async (id) =>{
 }
 
 
-export const updateOrder = () =>{
+export const updateOrder =  async (id,data) =>{
+    let status = false;
+    let error = false;
+    const {unidad_producto} = data
+    let sql = `UPDATE pedido  SET unidad_producto = '${unidad_producto}' WHERE id = ${id}  `; 
+    try {
+          
+        await pool.query(sql);
+        status = true
+    } catch (err) {
+        result= false;
+        error = {
+            "sql" : sql,
+            "description": err
+        }
+     
+    }
     let response = {
         "preocess": 'update order',
-        "status": true
+        "status": status,
+        "error": error
     }
     return response
 }
 
-export const deleteOrder = () =>{
-    let response = { 
-        "preocess": 'delete order',
-        "status": true
+export const deleteOrder = async (id) =>{
+    console.log(id)
+    
+    let status = false;
+    let error = false
+    let sql = `DELETE FROM pedido WHERE  id  = '${id}'`
+    try{
+        
+        await pool.query(sql);
+        status = true
+    }catch (err){
+        error = {
+            "sql" : sql,
+            "description": err
+        }
     }
-    return response
+    
+    let response = {
+        "preocess": 'delete order',
+        "status": status,
+        "error": error
+    }
+    
+    return response;
 }
+

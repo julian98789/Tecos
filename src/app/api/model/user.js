@@ -80,10 +80,27 @@ export const updateUser = () =>{
     return response
 }
 
-export const deleteUser = () =>{
-    let response = { 
-        "preocess": 'delete user',
-        "status": true
+export const deleteUser = async (cedula) =>{
+    console.log(cedula)
+    
+   let status = false;
+    let error = false
+    let sql = `DELETE FROM usuarios WHERE  cedula  = '${cedula}'`
+    try{
+        await pool.query(sql);
+        status = true
+    }catch (err){
+        error = {
+            "sql" : sql,
+            "description": err
+        } 
     }
-    return response
+    
+    let response = {
+        "preocess": 'delete user',
+        "status": status,
+        "error": error
+    }
+    
+    return response;
 }

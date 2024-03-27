@@ -23,18 +23,10 @@ export async function  GET(req, res) {
 
 export async function  PUT(req, res) {
     try {
-        const result  =  updateProducts() 
+        const result  = await updateProducts() 
         return NextResponse.json(result) 
     } catch (error) {
         console.log(error) 
     }
 }
 
-export async function  DELETE(req, res) {
-    try {
-        const result  =  deleteProducts() 
-        return NextResponse.json(result) 
-    } catch (error) {
-        console.log(error) 
-    }
-}

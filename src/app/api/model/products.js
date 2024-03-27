@@ -81,27 +81,32 @@ export const updateProducts = () =>{
     return response
 }
 
-export const deleteProducts = () =>{
-    let response = { 
-        "preocess": 'delete products',
-        "status": true
+export const deleteProducts = async (id) =>{
+    console.log(id)
+    
+    let status = false;
+    let error = false
+    let sql = `DELETE FROM productos WHERE  id  = '${id}'`
+    try{
+        
+        await pool.query(sql);
+        status = true
+    }catch (err){
+        error = {
+            "sql" : sql,
+            "description": err
+        } 
     }
-    return response
+    
+    let response = {
+        "preocess": 'delete products',
+        "status": status,
+        "error": error
+    }
+    
+    return response;
 }
 
 
 
 
-/*
-insert 
-select 
-Id
-all
-
-update 
-all
-parcial
-
-delete
-
-*/

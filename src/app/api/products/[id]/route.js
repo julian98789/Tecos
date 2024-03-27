@@ -12,9 +12,9 @@ export async function  GET(req, {params}) {
 
 export async function  DELETE(req, {params}) {
     try {
-        const result  = await deleteProducts(params.id) 
+        const result  = await deleteProducts(params.id); 
         return NextResponse.json(result) 
     } catch (error) {
         console.log(error) 
-    }
+    } 
 }

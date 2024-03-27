@@ -22,12 +22,5 @@ export async function  GET(req, res) {
     }
 }
 
-export async function  PUT(req, res) {
-    try {
-        const result  =  updateOrder() 
-        return NextResponse.json(result) 
-    } catch (error) {
-        console.log(error) 
-    }
-}
+
 

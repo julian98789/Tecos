@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { selectSalesId, updateSales } from "../../model/sales";
+import { selectSalesId, deleteSales } from "../../model/sales";
 
 export async function  GET(req, {params}) {
     try {
@@ -12,7 +12,7 @@ export async function  GET(req, {params}) {
 
 export async function  DELETE(req, {params}) {
     try {
-        const result  = await updateSales(params.id) 
+        const result  = await deleteSales(params.id) 
         return NextResponse.json(result) 
     } catch (error) {
         console.log(error) 
