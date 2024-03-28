@@ -75,10 +75,32 @@ export const selectSalesId = async (id) =>{
 }
 
 
-export const updateSales = () =>{
+export const updateSales =  async (id,data) =>{
+    let status = false;
+    let error = false;
+    const {valor_total } = data;
+    let updates = [];
+    for(const campo in data){
+        updates.push(`${campo} = '${data[campo]}'`)
+    }
+    let sql = `UPDATE ventas  SET ${updates.join(', ')} WHERE id = ${id}  `; 
+   
+    try {  
+        await pool.query(sql);
+        status = true
+    } catch (err) {
+        result= false;
+        error = {
+            "sql" : sql,
+            "description": err
+        }
+    }
+   
     let response = {
         "preocess": 'update sales',
-        "status": true
+        "status": status,
+        "error": error,
+       
     }
     return response
 }

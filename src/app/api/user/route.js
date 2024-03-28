@@ -3,7 +3,6 @@ import { insertUser, selectUser, updateUser, deleteUser } from "../model/user";
 
 export async function  POST(req, res) {
     try {
-        //let  datos = await req.formData()
         const datos = await req.json()
         const result  =  await insertUser(datos) 
         return NextResponse.json(result) 

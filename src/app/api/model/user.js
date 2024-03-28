@@ -72,10 +72,28 @@ export const selectUserId = async (cedula) =>{
     return response
 }
 
-export const updateUser = () =>{
+export const updateUser =  async (id,data) =>{
+    let status = false;
+    let error = false;
+    let updates = [];
+    for(const campo in data){
+        updates.push(`${campo} = '${data[campo]}'`)
+    }
+    let sql = `UPDATE usuarios  SET   ${updates.join(', ')} WHERE cedula = ${id}  `; 
+    try {  
+        await pool.query(sql);
+        status = true
+    } catch (err) {
+        result= false;
+        error = {
+            "sql" : sql,
+            "description": err
+        }
+    }
     let response = {
         "preocess": 'update user',
-        "status": true
+        "status": status,
+        "error": error
     }
     return response
 }

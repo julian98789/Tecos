@@ -78,10 +78,12 @@ export const selectOrderId = async (id) =>{
 export const updateOrder =  async (id,data) =>{
     let status = false;
     let error = false;
-    const {unidad_producto} = data
-    let sql = `UPDATE pedido  SET unidad_producto = '${unidad_producto}' WHERE id = ${id}  `; 
-    try {
-          
+    let updates = [];
+    for(const campo in data){
+        updates.push(`${campo} = '${data[campo]}'`)
+    }
+    let sql = `UPDATE pedido  SET ${updates.join(', ')} WHERE id = ${id}  `; 
+    try {  
         await pool.query(sql);
         status = true
     } catch (err) {
@@ -90,7 +92,6 @@ export const updateOrder =  async (id,data) =>{
             "sql" : sql,
             "description": err
         }
-     
     }
     let response = {
         "preocess": 'update order',

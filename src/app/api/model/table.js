@@ -72,10 +72,28 @@ export const selectTableId = async (id) =>{
     return response
 }
 
-export const updateTable = () =>{
+export const updateTable =  async (id,data) =>{
+    let status = false;
+    let error = false;
+    let updates = [];
+    for(const campo in data){
+        updates.push(`${campo} = '${data[campo]}'`)
+    }
+    let sql = `UPDATE mesa  SET  ${updates.join(', ')} WHERE id = ${id}  `; 
+    try {  
+        await pool.query(sql);
+        status = true
+    } catch (err) {
+        result= false;
+        error = {
+            "sql" : sql,
+            "description": err
+        }
+    }
     let response = {
         "preocess": 'update table',
-        "status": true
+        "status": status,
+        "error": error
     }
     return response
 }

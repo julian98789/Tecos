@@ -10,9 +10,9 @@ export async function  GET(req, {params}) {
     } 
 }
 export async function  PUT(req,  {params}) {
+    const data = await req.json()
     try {
-        const json = req.body;
-        const result  = await updateOrder(params.id,json) 
+        const result  = await updateOrder(params.id,data) 
         return NextResponse.json(result) 
     } catch (error) {
         console.log(error) 
