@@ -1,5 +1,8 @@
 'use client'
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import { useState } from "react"
+import { data } from "autoprefixer";
  
 const FormNewEmployed = () =>{
     
@@ -19,12 +22,40 @@ const FormNewEmployed = () =>{
             body: JSON.stringify(dataUser)   
         }
          await fetch("/api/user",options)  
-        .then(res=>res.json())    
-        
-    }
+        .then(res=>res.json()) 
+        .then(data=>processData(data))   
+    }    
+      const exito = () => {
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Registro Exitoso',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }   
 
+      const error = () =>{
+        Swal.fire({
+            position: 'top-center',
+            title: 'Error',
+            text: 'Se ha detectado un error',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 1500
+         })      
+    }
+      
+      const processData = (data) => {
+        if (data.result) {
+          exito()
+        }else{
+          error()
+        }
+      }
 
     return (
+      <div>
         <form onSubmit={handleSubmit(enviarDatos)} className="bg-[rgba(17,17,16,0.92)] border rounded-2xl p-8 flex justify-center items-center flex-col space-y-6 pb-16 w-[700px]">
           <div className="text-center text-2xl text-white pt-3">Formulario de registro de empleados</div>
       
@@ -95,13 +126,14 @@ const FormNewEmployed = () =>{
       
           <div className="w-[500px] flex flex-row gap-5">
             <div className="flex items-center">
-              <button type="submit" className="bg-green-600 rounded-xl w-[240px] outline-none h-9 pl-5 hover:bg-green-700 text-white">Registrar</button>
+              <button  type="submit" className="bg-green-600 rounded-xl w-[240px] outline-none h-9 pl-5 hover:bg-green-700 text-white">Registrar</button>
             </div>
             <div className="flex items-center">
               <button className="bg-red-600 rounded-xl w-[240px] outline-none h-9 pl-5 hover:bg-red-700 text-white" href="/admin">Cancelar</button>
             </div>
           </div>
         </form>
+      </div>
       );
 }
 export default FormNewEmployed;
