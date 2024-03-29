@@ -2,6 +2,8 @@
 import { GiTacos } from "react-icons/gi";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import { useForm } from "react-hook-form";
+import { useState } from "react"
+import Swal from "sweetalert2";
 import { TrendingUp } from "lucide-react";
 
 const FormNewProduct = () =>{
@@ -23,10 +25,48 @@ const FormNewProduct = () =>{
         }
          await fetch("/api/products",options)  
         .then(res=>res.json())    
-        
+        .then(data=>processData(data))    
     }
 
-    return(<form onSubmit={handleSubmit(enviarDatos)}  className="w-[700px] bg-[rgba(17,17,16,0.92)] border  rounded-2xl  flex justify-center items-center flex-col space-y-6 ">
+    const exito = () => {
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Registro Exitoso',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }   
+
+      const error = () =>{
+        Swal.fire({
+            position: 'top-center',
+            title: 'Error',
+            text: 'Se ha detectado un error',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 1500
+         })      
+    }
+      
+      const processData = (data) => {
+        if (data.result) {
+          exito()
+        }else{
+          error()
+        }
+      }
+       
+        const [formularioAbierto, setFormularioAbierto] = useState(true);
+
+        const cerrarFormulario = () => {
+          setFormularioAbierto(false);
+        }
+
+    return(
+      <div>
+         {formularioAbierto && (
+        <form onSubmit={handleSubmit(enviarDatos)}  className="w-[700px] bg-[rgba(17,17,16,0.92)] border  rounded-2xl  flex justify-center items-center flex-col space-y-6 ">
 
             <div className="text-center text-xl text-white pt-3">Formulario de productos</div>
 
@@ -89,11 +129,14 @@ const FormNewProduct = () =>{
                 </div>
                 <div className="w-[240px] flex flex-col space-y-2 ">
                     <button type="submit" className="bg-green-700 w-full h-7 rounded-lg text-white hover:bg-green-800">Registra</button>
-                    <button className="bg-red-700 w-full h-7 rounded-lg text-white hover:bg-red-800 ">Cancelar</button>
+                    <button  onClick={cerrarFormulario} className="bg-red-700 w-full h-7 rounded-lg text-white hover:bg-red-800 ">Cancelar</button>
                 </div>
                 </div>
             </div>
 
-    </form>)
+        </form>
+        )}
+    </div>  
+    )
 }
 export default FormNewProduct;

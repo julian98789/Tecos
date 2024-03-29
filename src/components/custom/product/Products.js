@@ -1,9 +1,9 @@
 'use client'
 import { useState } from "react"
-import FormNewEmployed from "../form/employes/FormNewEmployed";
+import FormNewProduct from "../form/products/FormNewProduct";
 
 
-const Employes = () =>{
+const Products = () =>{
 
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
     
@@ -15,21 +15,21 @@ const Employes = () =>{
     //useState cual es el usuario?
     return ( 
         <div className="w-full rounded-md shadow-sm px-16  ">
-            <button type="button" onClick={abrirFormulario} className="w-28 h-11 text-sm font-medium text-neutral-100 bg-neutral-900 rounded-lg hover:bg-red-700">
-                    Nuevo empleado 
+            <button type="button" onClick={abrirFormulario} className="w-32 h-11 text-sm font-medium text-neutral-100 bg-neutral-900 rounded-lg hover:bg-red-700">
+                    Nuevo Producto 
             </button>
 
             <div className="flex flex-raw justify-center ">
             {mostrarFormulario ? (
              <div className="flex flex-raw justify-center ">
-                <FormNewEmployed onClose={() => setMostrarFormulario(false)} />
+                <FormNewProduct onClose={() => setMostrarFormulario(false)} />
              </div>
             
-            ): (<FormNewEmployed />)}
+            ): (<FormNewProduct />)}
             </div>     
                
         </div>
     )
 }
 
-export default Employes
+export default Products
