@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react"
-import FormNewProduct from "../form/products/FormNewProduct";
+
 import FormNewEmployed from "../form/employes/FormNewEmployed";
 
 
@@ -23,7 +23,7 @@ const Employes = () =>{
             <div className="flex flex-raw justify-center ">
             {mostrarFormulario ? (
              <div className="flex flex-raw justify-center ">
-                <FormNewProduct onClose={() => setMostrarFormulario(false)} />
+                <FormNewEmployed onClose={() => setMostrarFormulario(false)} />
              </div>
             
             ): (<FormNewEmployed />)}

@@ -20,7 +20,7 @@ const LoginForm = () =>{
     const enviarDatos = async (dataUser) =>{   // Define una función asíncrona llamada "enviarDatos" que toma un objeto "dataUser" como parámetro.
 
         const options = {   // Define las opciones para la solicitud, incluyendo el método POST, las cabeceras y el cuerpo de la solicitud.
-            method: 'POST',  //// Define el método de la solicitud como POST.
+            method: 'POST',  // Define el método de la solicitud como POST.
             header: {   // Define las cabeceras de la solicitud.
                 'Content-Type': 'application/json'   // Establece el tipo de contenido de la solicitud como JSON.
             },
@@ -37,6 +37,7 @@ const LoginForm = () =>{
             window.location.href = "/admin"
         } else {
             //no pudo iniciase la sssion
+            console.log(data);
         }
         
     }

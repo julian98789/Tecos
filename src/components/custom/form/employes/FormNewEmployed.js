@@ -1,6 +1,7 @@
 'use client'
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
  
 const FormNewEmployed = () =>{

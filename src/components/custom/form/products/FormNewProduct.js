@@ -152,7 +152,7 @@ const FormNewProduct = () =>{
                  <div className="flex flex-col w-[240px]">
                      <input
                      {...register("imagen", { required: true })}
-                     onChange={onChange}
+                    
                        
                         className="w-full block text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-neutral-300 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                         type="file"/>
