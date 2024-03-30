@@ -1,8 +1,8 @@
 import RouteProtected from "@/middleware/RouteProtected";
 import Navbar from "@/components/custom/navbar/NavBar";
-import TableEmployes from "@/components/custom/dataTable/TableEmployes";
 
-const Admin = () => {
+
+const Cashier = () => {
 
     return (
       <RouteProtected>
@@ -15,4 +15,4 @@ const Admin = () => {
       </RouteProtected>
       )
 }
-export default Admin;
+export default Cashier;

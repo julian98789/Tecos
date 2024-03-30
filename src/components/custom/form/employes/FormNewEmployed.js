@@ -1,8 +1,7 @@
 'use client'
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { useState } from "react"
-import { data } from "autoprefixer";
+
  
 const FormNewEmployed = () =>{
     
@@ -21,6 +20,7 @@ const FormNewEmployed = () =>{
             },
             body: JSON.stringify(dataUser)   
         }
+        
          await fetch("/api/user",options)  
         .then(res=>res.json()) 
         .then(data=>processData(data))   
@@ -53,9 +53,18 @@ const FormNewEmployed = () =>{
           error()
         }
       }
+       
+        const [formularioAbierto, setFormularioAbierto] = useState(true);
+
+        const cerrarFormulario = () => {
+          setFormularioAbierto(false);
+        }
+
+      
 
     return (
       <div>
+         {formularioAbierto && (
         <form onSubmit={handleSubmit(enviarDatos)} className="bg-[rgba(17,17,16,0.92)] border rounded-2xl p-8 flex justify-center items-center flex-col space-y-6 pb-16 w-[700px]">
           <div className="text-center text-2xl text-white pt-3">Formulario de registro de empleados</div>
       
@@ -67,7 +76,7 @@ const FormNewEmployed = () =>{
       
             <div className="flex justify-center items-center flex-row gap-5">
               <div className="flex justify-between items-center flex-col">
-                <input {...register("nombre",{ required: true })} className="bg-neutral-300 border rounded w-[240px] h-9 outline-none pl-3 placeholder:text-slate-600"  placeholder="Ingrese su nombre"/>
+                <input {...register("nombre",{required: true })} className="bg-neutral-300 border rounded w-[240px] h-9 outline-none pl-3 placeholder:text-slate-600"  placeholder="Ingrese su nombre"/>
                 {errors.nombre && <span className="text-[#ff0000] text-xs">Este espacio es requerido</span>}
               </div>
               <div className="flex items-center flex-col">
@@ -129,10 +138,11 @@ const FormNewEmployed = () =>{
               <button  type="submit" className="bg-green-600 rounded-xl w-[240px] outline-none h-9 pl-5 hover:bg-green-700 text-white">Registrar</button>
             </div>
             <div className="flex items-center">
-              <button className="bg-red-600 rounded-xl w-[240px] outline-none h-9 pl-5 hover:bg-red-700 text-white" href="/admin">Cancelar</button>
+              <button  onClick={cerrarFormulario} className="bg-red-600 rounded-xl w-[240px] outline-none h-9 pl-5 hover:bg-red-700 text-white" href="/admin">Cancelar</button>
             </div>
           </div>
         </form>
+           )}
       </div>
       );
 }

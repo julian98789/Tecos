@@ -7,6 +7,7 @@ import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { MdTableRestaurant } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { MdAdminPanelSettings } from "react-icons/md";
 
 
 const MenuAdmin = () =>{
@@ -25,6 +26,14 @@ const MenuAdmin = () =>{
     return( 
         <div className="w-full mt-5 text-neutral-800">
             <div>
+            <div className="flex flex-row justify-start items-end p-2 cursor-pointer hover:bg-neutral-300  duration-75 rounded-lg "> 
+                    <div  >
+                    <MdAdminPanelSettings className="text-3xl "/>
+                    </div>
+                    <div className="px-5">
+                        <a href="/admin">Administrador</a>
+                    </div>
+                </div>
                 
                 <div className="flex flex-row justify-start items-end p-2 cursor-pointer hover:bg-neutral-300  duration-75 rounded-lg "> 
                     <div  >
@@ -40,7 +49,7 @@ const MenuAdmin = () =>{
                     <FaCartShopping className="text-3xl" />
                     </div>
                     <div className="px-5"> 
-                    <a href="#">Producto</a>
+                    <a href="/product">Producto</a>
                     </div>
                 </div>
 
@@ -66,10 +75,12 @@ const MenuAdmin = () =>{
                     <div >
                         <FaUser className="text-3xl"/>
                     </div>
-                    <div className="px-5">Empleados</div>
+                    <div className="px-5">
+                        <a href="/employe">Empleado</a> 
+                    </div>
                 </div>
 
-                <div className="flex flex-row justify-start items-end mt-64 p-2 cursor-pointer hover:bg-red-700 hover:text-white  duration-75 rounded-lg ">
+                <div className="flex flex-row justify-start items-end mt-56 p-2 cursor-pointer hover:bg-red-700 hover:text-white  duration-75 rounded-lg ">
                     <div >
                         <AiOutlineCloseCircle className="text-3xl"/>
                     </div>

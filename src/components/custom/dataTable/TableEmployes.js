@@ -2,7 +2,7 @@
 import { FaEdit } from "react-icons/fa";
 import { IoMdRemoveCircle } from "react-icons/io";
 const TableEmployes = () => {
-    return ( 
+    return ( /*
         <div>
             <div className=" flex  items-center justify-center overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-auto text-sm text-left rtl:text-right text-neutral-500 dark:text-neutral-400">
@@ -101,7 +101,7 @@ const TableEmployes = () => {
                 </table>
             </div>
         </div>
-     );
+     */ null);
 }
  
 export default TableEmployes;

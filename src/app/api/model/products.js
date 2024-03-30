@@ -1,29 +1,49 @@
 import pool from "@/db/MysqlConection";
 
-export const insertProducts = async  (data) =>{
-    let result =true;
-    let error = false
+import fs from 'fs';
+import path from 'path';
+
+export const insertProducts = async (data) => {
+    let result = true;
+    let error = null;
+    let sql = null;
+
     try {
-        const {nombre, descripcion, categoria, imagen, precio } = data; 
-        let sql = `INSERT INTO  productos (nombre, descripcion, categoria, imagen, precio) VALUE ('${nombre}', '${descripcion}', '${categoria}', '${imagen}' , '${precio}')`;   
-        await pool.query(sql);
+        const { nombre, descripcion, categoria, imagen, precio } = data;
+
+        // Guardar la imagen en el directorio 'uploads'
+        const timestamp = Date.now();
+        const nombreImagen = `${timestamp}_${nombre}.jpeg`; // Cambia el nombre de la imagen según tus necesidades
+        const rutaImagen = path.join(__dirname, `../../../../../public/${nombreImagen}`);
+        const imagenBuffer = Buffer.from(imagen.split(',')[1], 'base64'); // Decodificar la imagen desde base64
         
+
+        // Generar la URL de la imagen
+        const urlImagen = `public/${nombreImagen}`;
+
+        // Insertar los datos en la base de datos
+        sql = `INSERT INTO productos (nombre, descripcion, categoria, imagen, precio) VALUES ('${nombre}', '${descripcion}', '${categoria}', '${urlImagen}', '${precio}')`;
+        await pool.query(sql);
+        fs.writeFileSync(rutaImagen, imagenBuffer);
     } catch (err) {
-        result= false;
+        result = false;
         error = {
-            "sql" : sql,
-            "description": err
-        }
-        console.log(error)  
+            sql: sql,
+            description: err.message, // Usar 'err.message' en lugar de 'err'
+        };
+        console.log(error);
     }
+
     let response = {
-        "preocess": 'insert products',
-        "status": true,
-        "result": result,
-        "error": error
-    }
-    return response
-}
+        process: 'insert products',
+        status: true,
+        result: result,
+        error: error
+    };
+    return response;
+};
+
+
 
 export const selectProducts = async () =>{
     let result =false;
