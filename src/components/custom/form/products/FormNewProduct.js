@@ -39,8 +39,7 @@ const FormNewProduct = () =>{
          await fetch("/api/products",options)  
 
         .then(res=>res.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error)); 
+        .then(data=>processData(data))    
           
     } 
   
@@ -70,8 +69,6 @@ const FormNewProduct = () =>{
     };
     
   
- 
-
 
      
 
