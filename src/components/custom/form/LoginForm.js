@@ -53,13 +53,13 @@ const LoginForm = () =>{
             
 
             <div className=" relative ">
-                <input {...register("user",{ required: true })} className="bg-white rounded w-full outline-none h-9  pl-10 " placeholder="Ingrese su usuario"/>
+                <input {...register("user",{ required: true })}  autoComplete="off" className="bg-white rounded w-full outline-none h-9  pl-10 " placeholder="Ingrese su usuario"/>
                 <FaUser className="w-7 absolute top-[10px] left-1" />
             </div>
             {errors.user && <span className="text-[#ff0000] text-xs ">Este espacio es requerido</span>}
             
             <div className="  relative">
-                <input {...register("pass", { required: true })} className="bg-white rounded w-full h-9 outline-none pl-10" placeholder="Ingrese su contraseña"/>
+ <input {...register("pass", { required: true })}   type="password" className="bg-white rounded w-full h-9 outline-none pl-10" placeholder="Ingrese su contraseña"/>               
                 <RiLockPasswordFill className="w-7 absolute top-[10px] left-1"/>
             </div>
             {errors.pass && <span className="text-[#ff0000] text-xs  ">Este espacio es requerido</span>}

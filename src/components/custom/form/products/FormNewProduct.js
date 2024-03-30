@@ -123,13 +123,13 @@ const FormNewProduct = () =>{
                 <div className="flex justify-center items-center flex-row gap-5">
 
                     <div className=" relative flex flex-col ">
-                        <input {...register("nombre",{required:true})} className=" bg-neutral-300 border rounded w-[240px] outline-none h-9  pl-12 placeholder:text-slate-600"  placeholder="Ingrese el nombre"/>
+                        <input {...register("nombre",{required:true})}  autoComplete="off" className=" bg-neutral-300 border rounded w-[240px] outline-none h-9  pl-12 placeholder:text-slate-600"  placeholder="Ingrese el nombre"/>
                         <GiTacos className="w-7 absolute top-[10px] left-2"/>
                         {errors.nombre && <span className="text-[#ff0000] text-xs ">Este campo es requerido</span>}
                     </div>
                     <div className=" relative flex flex-col">
                         <input {...register("precio",{required:true})}
-                          className="bg-neutral-300  border rounded w-[240px] outline-none h-9  pl-12 placeholder:text-slate-600" placeholder="Ingrese el precio"/>
+                           autoComplete="off" className="bg-neutral-300  border rounded w-[240px] outline-none h-9  pl-12 placeholder:text-slate-600" placeholder="Ingrese el precio"/>
                         <MdOutlineAttachMoney className="w-7 absolute top-[10px] left-2"/>
                         {errors.precio && <span className="text-[#ff0000] text-xs ">Este campo es requerido</span>}
 
@@ -149,7 +149,7 @@ const FormNewProduct = () =>{
                  <div className="flex flex-col w-[240px]">
                      <input
                      {...register("imagen", { required: true })}
-                    
+                     autoComplete="off"
                        
                         className="w-full block text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-neutral-300 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                         type="file"/>

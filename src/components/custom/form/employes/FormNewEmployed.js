@@ -24,7 +24,7 @@ const FormNewEmployed = () =>{
         
          await fetch("/api/user",options)  
         .then(res=>res.json()) 
-        .then(data=>processData(data))   
+        .then(data=>processData(data))    
     }    
       const exito = () => {
         Swal.fire({
@@ -43,17 +43,22 @@ const FormNewEmployed = () =>{
             text: 'Se ha detectado un error',
             icon: 'error',
             showConfirmButton: false,
-            timer: 1500
+            timer: 2500
          })      
     }
+
+  
       
-      const processData = (data) => {
-        if (data.result) {
-          exito()
-        }else{
-          error()
-        }
-      }
+  const processData = (data) => {
+    if (data.result) {
+      exito();
+    } else {
+      error();
+    }
+  }
+
+      
+
        
         const [formularioAbierto, setFormularioAbierto] = useState(true);
 
@@ -77,11 +82,11 @@ const FormNewEmployed = () =>{
       
             <div className="flex justify-center items-center flex-row gap-5">
               <div className="flex justify-between items-center flex-col">
-                <input {...register("nombre",{required: true })} className="bg-neutral-300 border rounded w-[240px] h-9 outline-none pl-3 placeholder:text-slate-600"  placeholder="Ingrese su nombre"/>
+                <input {...register("nombre",{required: true })}  autoComplete="off" className="bg-neutral-300 border rounded w-[240px] h-9 outline-none pl-3 placeholder:text-slate-600"  placeholder="Ingrese su nombre"/>
                 {errors.nombre && <span className="text-[#ff0000] text-xs">Este espacio es requerido</span>}
               </div>
               <div className="flex items-center flex-col">
-                <input {...register("apellido",{ required: true })} className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-3 placeholder:text-slate-600" placeholder="Ingrese su apellido"/>
+                <input {...register("apellido",{ required: true })}  autoComplete="off" className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-3 placeholder:text-slate-600" placeholder="Ingrese su apellido"/>
                 {errors.apellido && <span className="text-[#ff0000] text-xs">Este espacio es requerido</span>}
               </div>
             </div>
@@ -95,11 +100,11 @@ const FormNewEmployed = () =>{
       
             <div className="flex justify-items-start flex-row gap-5">
               <div className="flex items-center flex-col">
-                <input {...register("cedula",{ required: true })} className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-3 placeholder:text-slate-600 text-start" placeholder="Ingrese identificacion"/>
+                <input {...register("cedula",{ required: true })}  autoComplete="off" className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-3 placeholder:text-slate-600 text-start" placeholder="Ingrese identificacion"/>
                 {errors.cedula && <span className="text-[#ff0000] text-xs">Este espacio es requerido</span>}
               </div>
               <div className="flex items-center flex-col">
-                <input {...register("correo",{ required: true })} className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-3 placeholder:text-slate-600 text-start" placeholder="Ingrese Email"/>
+                <input {...register("correo",{ required: true })} name="correo" autoComplete="off" className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-3 placeholder:text-slate-600 text-start" placeholder="Ingrese Email"/>
                 {errors.correo && <span className="text-[#ff0000] text-xs">Este espacio es requerido</span>}
               </div>
             </div>
@@ -113,11 +118,11 @@ const FormNewEmployed = () =>{
       
             <div className="flex justify-center items-center flex-row gap-5">
               <div className="flex items-center flex-col">
-                <input {...register("password",{ required: true })} className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-3 placeholder:text-slate-600" placeholder="Ingrese su contraña"/>
+                <input {...register("password",{ required: true })}   type="password" className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-3 placeholder:text-slate-600" placeholder="Ingrese su contraña"/>
                 {errors.password && <span className="text-[#ff0000] text-xs">Este espacio es requerido</span>}
               </div>
               <div className="flex items-center flex-col">
-                <input {...register("ConfrimPass",{ required: true })} className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-3 placeholder:text-slate-600" placeholder="Confirme su contraseña"/>
+                <input {...register("ConfrimPass",{ required: true })}   type="password" className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-3 placeholder:text-slate-600" placeholder="Confirme su contraseña"/>
                 {errors.ConfrimPass && <span className="text-[#ff0000] text-xs flex justify-start">Este espacio es requerido</span>}
               </div>
             </div>
