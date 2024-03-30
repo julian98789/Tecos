@@ -1,8 +1,8 @@
 'use client'
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { useState } from "react"
-import { data } from "autoprefixer";
+import { useState } from "react";
+
  
 const FormNewEmployed = () =>{
     
@@ -21,6 +21,7 @@ const FormNewEmployed = () =>{
             },
             body: JSON.stringify(dataUser)   
         }
+        
          await fetch("/api/user",options)  
         .then(res=>res.json()) 
         .then(data=>processData(data))   
@@ -76,7 +77,7 @@ const FormNewEmployed = () =>{
       
             <div className="flex justify-center items-center flex-row gap-5">
               <div className="flex justify-between items-center flex-col">
-                <input {...register("nombre",{ required: true })} className="bg-neutral-300 border rounded w-[240px] h-9 outline-none pl-3 placeholder:text-slate-600"  placeholder="Ingrese su nombre"/>
+                <input {...register("nombre",{required: true })} className="bg-neutral-300 border rounded w-[240px] h-9 outline-none pl-3 placeholder:text-slate-600"  placeholder="Ingrese su nombre"/>
                 {errors.nombre && <span className="text-[#ff0000] text-xs">Este espacio es requerido</span>}
               </div>
               <div className="flex items-center flex-col">
