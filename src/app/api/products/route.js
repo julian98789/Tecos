@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { insertProducts, selectProducts, updateProducts, deleteProducts } from "../model/products";
+import { insertProducts, selectProducts, updateProducts } from "../model/products";
 
 export async function  POST(req, res) {
     try {
