@@ -12,8 +12,8 @@ const Card = ({product}) => {
           <span className="text-sm font-medium">Precio: ${product.precio}</span>
         </div>
         <span className="text-sm font-medium">Categoría: {product.categoria}</span>
-        <div className="flex items-center mt-4">
-         
+        <div className="flex items-center mt-4 ">
+          <input type="number" min="1" className="rounded-md p-2 mr-2 w-28 bg-neutral-900 border border-white " placeholder="Cantidad" />
           <button className="bg-blue-500 hover:bg-blue-700 text-white rounded-md px-4 py-2">Agregar</button>
         </div>
       </div>
@@ -22,9 +22,3 @@ const Card = ({product}) => {
   
   export default Card;
 
-  /*
-
-
-  
-
-      */

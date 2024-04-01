@@ -22,8 +22,8 @@ const PgMenu = () => {
 
 
     return (
-        <div className="w-full h-screen flex justify-center items-center bg-repeat bg-[url('/Fondo.jpg')] bg-top  overflow-y-auto">
-            <div className="w-full h-full bg-[rgba(38,38,38,.4)] flex flex-col">
+        <div className="w-full h-full flex bg-[rgba(23,23,23,.5)] justify-center items-center overflow-y-auto">
+            <div className="w-full h-full flex flex-col">
                 <div className="w-full flex flex-col">
                     <NavBarCliente/>
                 </div>
