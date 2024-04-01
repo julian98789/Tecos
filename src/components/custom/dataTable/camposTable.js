@@ -13,7 +13,7 @@ const CamposTable = () => {
                     <th className="px-4 pr-48 py-2 text-left text-xs font-medium text-neutral-100  uppercase">Correo</th>
                     <th className="px-4 pr-16 py-2 text-left text-xs font-medium text-neutral-100  uppercase">Password</th>
                     <th className="px-4 pr-20 py-2 text-left text-xs font-medium text-neutral-100  uppercase">Rol</th>
-                    <th className="px-4 pr-11 py-2 text-left text-xs font-medium text-neutral-100  uppercase">Acciones</th>
+                    <th className="px-4 pr-11 py-2 text-left text-xs font-medium text-neutral-100  uppercase">Eliminar</th>
                 </tr>
             </thead>
   </table>

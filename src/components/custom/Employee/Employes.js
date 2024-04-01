@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import FormNewEmployed from "../form/employes/FormNewEmployed";
 import TableEmployes from "../dataTable/TableEmployes";
 import CamposTable from "../dataTable/camposTable";
-
+import Swal from "sweetalert2";
 
 const Employes = () =>{
 
@@ -18,7 +18,7 @@ const Employes = () =>{
 
     useEffect(()=>{
         recibirDatos();
-    },[])
+    },[url])
 
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
     
@@ -38,7 +38,7 @@ const Employes = () =>{
             </div>
         ) : (
             <div>
-                <div>
+                <div className="mt-11">
                     <CamposTable />
                 </div>
                 <div className="flex flex-col">
