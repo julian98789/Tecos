@@ -8,6 +8,7 @@ import { MdTableRestaurant } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { MdAdminPanelSettings } from "react-icons/md";
+import Link from 'next/link'
 
 
 const MenuAdmin = () =>{
@@ -67,7 +68,7 @@ const MenuAdmin = () =>{
                         <MdTableRestaurant className="text-3xl"/>
                     </div>
                     <div className="px-5">
-                    <a href="#">Mesa</a> 
+                    <Link href="/">Mesas</Link>
                     </div>
                 </div>
 

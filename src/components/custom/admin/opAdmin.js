@@ -15,7 +15,7 @@ const OpAdmin = () =>{
 
         return <div>
        
-            <div class="inline-flex rounded-md shadow-sm px-16 py-5 " role="group">
+            <div className="inline-flex rounded-md shadow-sm px-16 py-5 " role="group">
                 <button type="button" onClick={abrirFormulario} className="w-28 h-11 text-sm font-medium text-neutral-100 bg-neutral-900 rounded-s-lg hover:bg-red-700">
                     Nuevo empleado 
                 </button>

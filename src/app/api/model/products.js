@@ -14,12 +14,12 @@ export const insertProducts = async (data) => {
         // Guardar la imagen en el directorio 'uploads'
         const timestamp = Date.now();
         const nombreImagen = `${timestamp}_${nombre}.jpeg`; // Cambia el nombre de la imagen según tus necesidades
-        const rutaImagen = path.join(__dirname, `../../../../../public/${nombreImagen}`);
+        const rutaImagen = path.join(__dirname, `../../../../../public/img/menu/${nombreImagen}`);
         const imagenBuffer = Buffer.from(imagen.split(',')[1], 'base64'); // Decodificar la imagen desde base64
         
 
         // Generar la URL de la imagen
-        const urlImagen = `public/${nombreImagen}`;
+        const urlImagen = `/img/menu/${nombreImagen}`;
 
         // Insertar los datos en la base de datos
         sql = `INSERT INTO productos (nombre, descripcion, categoria, imagen, precio) VALUES ('${nombre}', '${descripcion}', '${categoria}', '${urlImagen}', '${precio}')`;
@@ -74,6 +74,29 @@ export const selectProductsId = async (id) =>{
     let error = false
     try{
         let sql = `SELECT * FROM productos WHERE  id  = '${id}'`
+        let [rows] = await pool.query(sql);
+        result =rows
+    }catch (err){
+        error = {
+            "sql" : sql,
+            "description": err
+        }
+        console.log(error)  
+    }
+    let response = {
+        "preocess": 'select products',
+        "status": true,
+        "result": result
+
+    }
+    return response
+}
+
+export const selectProductsCategory = async (categoria) =>{
+    let result =false;
+    let error = false
+    try{
+        let sql = `SELECT * FROM productos WHERE  categoria  = '${categoria}'`
         let [rows] = await pool.query(sql);
         result =rows
     }catch (err){
