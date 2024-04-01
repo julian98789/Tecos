@@ -1,10 +1,9 @@
 'use client'
 import { useState, useEffect } from "react"
-
 import FormNewEmployed from "../form/employes/FormNewEmployed";
-import TableEmployes from "../dataTable/TableEmployes";
-import CamposTable from "../dataTable/camposTable";
-import Swal from "sweetalert2";
+import TableEmployes from "../dataTable/user/TableEmployes";
+import CamposTable from "../dataTable/user/camposTable";
+
 
 const Employes = () =>{
 
