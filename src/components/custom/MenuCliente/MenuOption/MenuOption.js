@@ -4,7 +4,6 @@ const MenuOption = ({setUrl}) =>{
 
 
 const changeUrl= (value) =>{
-    console.log('se ejecuto')
     setUrl(value);
 }
         return <div>
