@@ -3,9 +3,12 @@ import React, { useState, useEffect } from 'react';
 import NavBarCliente from "@/components/custom/navbar/NavBarCliente";
 import MenuOption from '@/components/custom/MenuCliente/MenuOption/MenuOption';
 import Card from '@/components/custom/MenuCliente/vista/Card';  // Importa el componente Card para mostrar cada producto
+import useStore from "@/hook/useSession.js";
+import Navbar from '@/components/custom/navbar/NavBar';
 
 
 const PgMenu = () => {
+  const {getUserData} = useStore()
   const [products, setProducts] = useState([])
   const [url, setUrl]= useState('/api/products')
   const recibirDatos = async () => {
@@ -18,6 +21,8 @@ const PgMenu = () => {
     recibirDatos();
   },[url])
 
+  const role = getUserData();
+  
 
 
 
@@ -25,7 +30,7 @@ const PgMenu = () => {
         <div className="w-full h-full flex bg-[rgba(23,23,23,.5)] justify-center items-center overflow-y-auto">
             <div className="w-full h-full flex flex-col">
                 <div className="w-full flex flex-col">
-                    <NavBarCliente/>
+                     {role === 'admin' ? <Navbar/> : <NavBarCliente/>}
                 </div>
                 <div className="flex flex-col items-end">
                         <MenuOption  setUrl={setUrl}/>

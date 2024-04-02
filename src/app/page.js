@@ -3,11 +3,12 @@ import Table from "@/components/custom/tables/Table.js";
 import NavBarCliente from "@/components/custom/navbar/NavBarCliente";
 import useStore from "@/hook/useSession.js";
 import { useEffect, useState } from "react";
+import Navbar from "@/components/custom/navbar/NavBar";
 
 
 export default function Home() {
 
-	const {logged, user, login, logout} = useStore()
+	const {logged, user, login, logout,getUserData} = useStore()
 	const [val , setVal] = useState(null)
 
 	
@@ -16,9 +17,10 @@ export default function Home() {
 
 		console.log(logged)
 		console.log(user)
-	
+		console.log(getUserData())
 	
 	},[logged,user])
+	const role = getUserData();
 
 	const myClick = () =>{
 		
@@ -27,7 +29,7 @@ export default function Home() {
 	return (
 		<div className="w-full h-screen flex justify-center items-center bg-cover  bg-[url('/Fondo.jpg')] bg-top" >
 			<div className="w-full h-full bg-[rgba(38,38,38,.4)] flex flex-col">
-				<NavBarCliente/>
+				{role === 'admin' ? <Navbar/> : <NavBarCliente/>}
 
 				<div className="w-full min-h-[calc(100%-60px)]">
 					<div className="w-full min-h-full flex justify-center items-center ">

@@ -10,6 +10,7 @@ export async function  POST(req, res) { // Define una función asíncrona llamad
     try {
         let [rows] = await pool.query(sql)    // Ejecuta la consulta SQL utilizando la conexión a la base de datos "pool" y espera el resultado.
         return NextResponse.json(rows)  // Devuelve los datos obtenidos como respuesta en formato JSON utilizando NextResponse.
+        
     } catch (error) {
         console.log(error)  // Captura cualquier error que ocurra durante la ejecución de la consulta y lo registra en la consola.
     }
