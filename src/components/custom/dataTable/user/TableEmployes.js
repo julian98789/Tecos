@@ -56,36 +56,18 @@ const TableEmployes = ({users}) => {
     }
       
     return (   
-        <table className="table-fixed w-75 text-left bg-white">
-            <tbody>
-                <tr>
-                <td className="px-4 py-4 break-all">{users.nombre}</td>
-                <td className="px-4 py-4  break-all">{users.apellido}</td>
-                <td className="px-4 py-4 break-all">{users.cedula}</td>
-                <td className="px-4 py-4 break-all">{users.correo}</td>
-                <td className="px-4 py-4  break-all">{users.password}</td>
-                <td className="px-4 py-4  break-all">{users.rol}</td>
-                
-                <td className="px-4 py-2 text-neutral-800 text-left">
-                    <button onClick={() => eliminarUsuario(users.cedula)} className="font-medium text-neutral-800 hover:text-gray-500">
-                    <IoMdRemoveCircle />
-                    </button>
-                </td>
-                </tr>
-            </tbody>
-        </table>
+        <div className="flex justify-center">
+            <div className="w-40 px-4 py-4 bg-slate-50 overflow-hidden break-word ">{users.nombre}  </div>
+            <div className="w-40 px-4 py-4 bg-slate-50 overflow-hidden break-word">{users.apellido}  </div>
+            <div className="w-40 px-4 py-4 bg-slate-50 overflow-hidden break-word">{users.cedula}  </div>
+            <div className="w-52 px-4 py-4 bg-slate-50 overflow-hidden break-word">{users.correo}  </div>
+            <div className="w-32 px-4 py-4 bg-slate-50 overflow-hidden break-word ">{users.password}  </div>
+            <div className="w-24 px-4 py-4 bg-slate-50 overflow-hidden break-word">{users.rol}  </div>
+            <button onClick={() => eliminarUsuario(users.cedula)} className=" flex justify-center w-24 px-4 py-4 bg-slate-50 overflow-hidden break-word text-neutral-800 hover:neutral-500">
+               <IoMdRemoveCircle />
+           </button>
+        </div>
      );
 }
  
 export default TableEmployes;
-
-/*
-<td className="px-4 py-2 text-neutral-800 text-right">
-       
-     
- <a href="#" className="font-medium text-neutral-800 hover:text-gray-500">
-          <FaEdit />
-        </a>
-
-         </td>
-*/

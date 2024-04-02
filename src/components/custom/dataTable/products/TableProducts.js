@@ -54,36 +54,19 @@ const TableProducts = ({products}) => {
     }
       
     return (   
-        <table className="table-fixed w-75 text-left bg-white">
-            <tbody>
-                <tr>
-                <td className="px-4 py-4 break-all">{products.id}</td>
-                <td className="px-4 py-4 break-all">{products.nombre}</td>
-                <td className="px-4 py-4  break-all">{products.descripcion}</td>
-                <td className="px-4 py-4 break-all">{products.categoria}</td>
-                <td className="px-4 py-4 break-all">{products.imagen}</td>
-                <td className="px-4 py-4  break-all">{products.precio}</td>
-                
-                <td className="px-4 py-2 text-neutral-800 text-left">
-                    <button onClick={() => eliminarProducto(products.id)} className="font-medium text-neutral-800 hover:text-gray-500">
-                    <IoMdRemoveCircle />
-                    </button>
-                </td>
-                </tr>
-            </tbody>
-        </table>
+    <div className="flex justify-center  ">
+        <div className="w-16 px-4 py-4 bg-slate-50 overflow-hidden break-word ">{products.id}  </div>
+        <div className="w-40 px-1 py-4 bg-slate-50 overflow-hidden break-word">{products.nombre}  </div>
+        <div className="w-56 px-1 py-4 bg-slate-50 overflow-hidden break-word">{products.descripcion}  </div>
+        <div className="w-36 px-4 py-4 bg-slate-50 overflow-hidden break-word">{products.categoria}  </div>
+        <div className="w-64 px-1 py-4 bg-slate-50 overflow-hidden break-word ">{products.imagen}  </div>
+        <div className="w-24 px-4 py-4 bg-slate-50 overflow-hidden break-word">{products.precio}  </div>
+        <button onClick={() => eliminarUsuario(users.cedula)} className=" flex justify-center w-24 px-4 py-4 bg-slate-50 overflow-hidden break-word text-neutral-800 hover:neutral-500">
+           <IoMdRemoveCircle />
+       </button>
+    </div>
      );
 }
  
 export default TableProducts;
 
-/*
-<td className="px-4 py-2 text-neutral-800 text-right">
-       
-     
- <a href="#" className="font-medium text-neutral-800 hover:text-gray-500">
-          <FaEdit />
-        </a>
-
-         </td>
-*/

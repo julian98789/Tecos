@@ -3,21 +3,18 @@
 
 const CamposTable = () => {
     return ( 
-      
-   <table className="table-fixed w-75 bg-neutral-800">
-            <thead>
-                <tr className="">
-                    <th className="px-4 pr-20 py-2 text-left text-xs font-medium text-neutral-100 uppercase">Nombre</th>
-                    <th className="px-4 pr-28 py-2 text-left text-xs font-medium text-neutral-100  uppercase">Apellido</th>
-                    <th className="px-4 pr-48 py-2 text-left text-xs font-medium text-neutral-100  uppercase">Cédula</th>
-                    <th className="px-4 pr-48 py-2 text-left text-xs font-medium text-neutral-100  uppercase">Correo</th>
-                    <th className="px-4 pr-16 py-2 text-left text-xs font-medium text-neutral-100  uppercase">Password</th>
-                    <th className="px-4 pr-20 py-2 text-left text-xs font-medium text-neutral-100  uppercase">Rol</th>
-                    <th className="px-4 pr-11 py-2 text-left text-xs font-medium text-neutral-100  uppercase">Eliminar</th>
-                </tr>
-            </thead>
-  </table>
+        <div className="flex justify-center ">
+            <div className="w-40 px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word ">Nombre  </div>
+            <div className="w-40 px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word">Apellido  </div>
+            <div className="w-40 px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word">Cédula  </div>
+            <div className="w-52 px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word">Correo  </div>
+            <div className="w-32 px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word ">Password  </div>
+            <div className="w-24 px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word">Rol  </div>
+            <div className="w-24 px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word">Eliminar  </div>
+        </div>
+
      );
 }
  
 export default CamposTable;
+
