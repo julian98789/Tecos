@@ -1,6 +1,6 @@
 import RouteProtected from "@/middleware/RouteProtected";
 import Navbar from "@/components/custom/navbar/NavBar";
-import TableEmployes from "@/components/custom/dataTable/TableEmployes";
+import TableEmployes from "@/components/custom/dataTable/user/TableEmployes";
 
 const Admin = () => {
 

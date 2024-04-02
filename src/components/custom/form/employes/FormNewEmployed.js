@@ -156,7 +156,7 @@ const FormNewEmployed = () =>{
               <button  type="submit" className="bg-green-600 rounded-xl w-[240px] outline-none h-9 pl-5 hover:bg-green-700 text-white">Registrar</button>
             </div>
             <div className="flex items-center ">
-              <button  onClick={cerrarFormulario} className="bg-red-600 rounded-xl w-[240px] outline-none h-9 pl-5 hover:bg-red-700 text-white" href="/admin">Cancelar</button>
+              <button  onClick={cerrarFormulario} className="bg-red-600 rounded-xl w-[240px] outline-none h-9 pl-5 hover:bg-red-700 text-white">Cancelar</button>
             </div>
           </div>
         </form>
