@@ -62,7 +62,7 @@ const TableProducts = ({products}) => {
         <div className="w-64 px-1 py-4 bg-slate-50 overflow-hidden break-word ">{products.imagen}  </div>
         <div className="w-24 px-4 py-4 bg-slate-50 overflow-hidden break-word">{products.precio}  </div>
         <button onClick={() => eliminarUsuario(users.cedula)} className=" flex justify-center w-24 px-4 py-4 bg-slate-50 overflow-hidden break-word text-neutral-800 hover:neutral-500">
-           <IoMdRemoveCircle />
+           <IoMdRemoveCircle className="hover:text-neutral-600" />
        </button>
     </div>
      );
