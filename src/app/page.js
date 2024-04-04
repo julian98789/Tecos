@@ -3,7 +3,8 @@ import Table from "@/components/custom/tables/Table";
 import NavBarCliente from "@/components/custom/navbar/NavBarCliente";
 import useStore from "@/hook/useSession.js";
 import { useEffect, useState } from "react";
-import Navbar from "@/components/custom/navbar/NavBar";
+import NavBarAdmin from "@/components/custom/navbar/navbarAdmin/NavBarAdmin";
+import NavbarCashier from "@/components/custom/navbar/nabvarCashier/NavBarCashier";
 
 
 export default function Home() {
@@ -50,7 +51,8 @@ export default function Home() {
 	return (
 		<div className="w-full h-screen flex justify-center items-center bg-cover  bg-[url('/Fondo.jpg')] bg-top" >
 			<div className="w-full h-full bg-[rgba(38,38,38,.4)] flex flex-col">
-				{role === 'admin' ? <Navbar/> : <NavBarCliente/>}
+				{role === 'admin' ? <NavBarAdmin/> : <NavBarCliente/>}
+				{role === 'cajero' ? <NavbarCashier/> : ""}
 
 				<div className="w-full min-h-[calc(100%-60px)]">
 					<div className="w-full min-h-full flex justify-center items-center ">

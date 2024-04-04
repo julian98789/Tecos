@@ -4,7 +4,8 @@ import NavBarCliente from "@/components/custom/navbar/NavBarCliente";
 import MenuOption from '@/components/custom/MenuCliente/MenuOption/MenuOption';
 import Card from '@/components/custom/MenuCliente/vista/Card';  // Importa el componente Card para mostrar cada producto
 import useStore from "@/hook/useSession.js";
-import Navbar from '@/components/custom/navbar/NavBar';
+import NavBarAdmin from '@/components/custom/navbar/navbarAdmin/NavBarAdmin';
+import NavbarCashier from '@/components/custom/navbar/nabvarCashier/NavBarCashier';
 
 
 const PgMenu = () => {
@@ -30,7 +31,8 @@ const PgMenu = () => {
         <div className="w-full h-full flex bg-[rgba(23,23,23,.5)] justify-center items-center overflow-y-auto">
             <div className="w-full h-full flex flex-col">
                 <div className="w-full flex flex-col">
-                     {role === 'admin' ? <Navbar/> : <NavBarCliente/>}
+                     {role === 'admin' ? <NavBarAdmin/> : <NavBarCliente/>}
+                     {role === 'cajero' ? <NavbarCashier/> :  " "}
                 </div>
                 <div className="flex flex-col items-end">
                         <MenuOption  setUrl={setUrl}/>

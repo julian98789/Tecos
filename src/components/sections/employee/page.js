@@ -1,5 +1,5 @@
 import RouteProtected from "@/middleware/RouteProtected";
-import Navbar from "@/components/custom/navbar/NavBar";
+import Navbar from "@/components/custom/navbar/navbarAdmin/NavBarAdmin";
 import AddEmployee from "@/components/custom/Employee/AddEmployee";
 
 const Employee = () => {

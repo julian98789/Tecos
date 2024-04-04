@@ -1,8 +1,8 @@
 'use client'
 import RouteProtected from "@/middleware/RouteProtected";
-import NavbarCashier from "@/components/custom/navbar/NavBarCashier";
+import NavbarCashier from "@/components/custom/navbar/nabvarCashier/NavBarCashier";
 import useStore from "@/hook/useSession.js";
-import Navbar from "@/components/custom/navbar/NavBar";
+import NavBarAdmin from "@/components/custom/navbar/navbarAdmin/NavBarAdmin";
 
 
 
@@ -17,7 +17,7 @@ const Cashier = () => {
     return (
       <RouteProtected>
       <>
-         {role === 'cajero' ? <NavbarCashier/> : <Navbar/>} 
+         {role === 'cajero' ? <NavbarCashier/> : <NavBarAdmin/>} 
         <div className="w-full h-full bg-[rgba(23,23,23,.5)] overflow-y-auto py-[70px]"> 
          
         </div>

@@ -1,6 +1,6 @@
 'use client'
 import RouteProtected from "@/middleware/RouteProtected";
-import NavBarCashier from "@/components/custom/navbar/NavBarCashier";
+import NavBarCashier from "@/components/custom/navbar/nabvarCashier/NavBarCashier";
 
 
 const cashier = () => {
