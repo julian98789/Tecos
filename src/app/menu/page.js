@@ -36,8 +36,8 @@ const PgMenu = () => {
                 </div>
                 <div className="flex flex-col items-end">
                         <MenuOption  setUrl={setUrl}/>
-                    </div>
-                <div className="flex flex-wrap gap-4 justify-center">
+                </div>
+                <div className="flex flex-wrap gap-4 justify-center mt-12">
 
                   {
                     products.map((product)=>{
@@ -53,3 +53,7 @@ const PgMenu = () => {
 };
 
 export default PgMenu;
+
+/*
+
+*/
