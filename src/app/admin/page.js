@@ -1,9 +1,6 @@
 'use client'
 import RouteProtected from "@/middleware/RouteProtected";
 import NavBarAdmin from "@/components/custom/navbar/navbarAdmin/NavBarAdmin";
-import TableEmployes from "@/components/custom/dataTable/user/TableEmployes";
-import Navbar from "@/components/custom/navbar/NavBar";
-import TableEmployes from "@/components/custom/dataTable/TableEmployes";
 import useStore from "@/hook/useSession.js";
 import { useRouter } from "next/navigation";
 
