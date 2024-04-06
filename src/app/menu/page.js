@@ -37,6 +37,8 @@ const PgMenu = () => {
                 <div  >
                 {role === 'admin' ? <div className="flex flex-col items-end mt-14"><MenuOption  setUrl={setUrl}/></div>: ""}
                 {role === 'cajero' ? <div className="flex flex-col items-end "><MenuOption  setUrl={setUrl}/></div>: ""}
+                {role !== 'cajero' && role !== 'admin' ? <div className="flex flex-col items-end "><MenuOption  setUrl={setUrl}/></div>: ""}
+                
                 </div>
                 <div className="flex flex-wrap gap-4 justify-center ">
 
