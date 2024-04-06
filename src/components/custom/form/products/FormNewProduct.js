@@ -92,7 +92,7 @@ const FormNewProduct = () =>{
     }
       
       const processData = (data) => {
-        if (data === true) {
+        if (data) {
           exito()
           console.log(data.result)
         }else{
