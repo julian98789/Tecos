@@ -4,11 +4,20 @@ export const insertOrder = async  (data) =>{
     let result =true;
     let error = false
     let sql = null
+    let sql2 = null
     try {
-        const {unidad_producto, valor_unitario, valor_total, fecha, hora, estado, producto_id, mesa_id } = data; 
-        sql = `INSERT INTO  pedido (unidad_producto, valor_unitario, valor_total, fecha, hora, estado, producto_id, mesa_id ) 
-        VALUE ('${unidad_producto}', '${valor_unitario}', '${valor_total}', '${fecha}','${hora}','${estado}', '${producto_id}','${mesa_id}' )`;   
-        await pool.query(sql);
+        const {unidad_producto, valor_unitario, valor_total, estado,id_producto, mesa_id,cantida_producto } = data; 
+        sql = `INSERT INTO pedido (unidad_producto, valor_total, fecha, hora, estado, mesa_id)
+        VALUES
+            (${unidad_producto},${valor_total}, CURDATE(), CURTIME(), ${estado}, ${mesa_id})`;
+        
+        sql2=`INSERT INTO pedido_producto (id_pedido, id_producto,cantidad_producto,valor_unitario)
+        VALUES
+            (1, ${id_producto},1,${valor_unitario}),  -- Producto con ID 1
+            (1, ${id_producto},1,${valor_unitario}),  -- Producto con ID 2
+            (1, ${id_producto},2,${valor_unitario});  -- Producto con ID 3`
+
+        await pool.query(sql,sql2);
         
     } catch (err) {
         result= false;

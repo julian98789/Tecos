@@ -6,12 +6,16 @@ import Card from '@/components/custom/MenuCliente/vista/Card';  // Importa el co
 import useStore from "@/hook/useSession.js";
 import NavBarAdmin from '@/components/custom/navbar/navbarAdmin/NavBarAdmin';
 import NavbarCashier from '@/components/custom/navbar/nabvarCashier/NavBarCashier';
+import { FiShoppingCart } from "react-icons/fi";
+import useCart from "@/hook/useCart";
 
 
 const PgMenu = () => {
   const {getUserData} = useStore()
   const [products, setProducts] = useState([])
   const [url, setUrl]= useState('/api/products')
+  const { getCart } = useCart();
+    const cartItems = getCart().length;
   const recibirDatos = async () => {
     const response = await fetch(url);
     const data = await response.json();
@@ -36,8 +40,17 @@ const PgMenu = () => {
                 </div>
                 <div className="flex flex-col items-end">
                         <MenuOption  setUrl={setUrl}/>
+                        <div className="relative">
+                       <FiShoppingCart size={24} />
+                               {cartItems > 0 && (
+                                 <div className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex justify-center items-center text-xs">
+                               {cartItems}
+                       </div>
+                              )}
+                     </div>
                     </div>
-                <div className="flex flex-wrap gap-4 justify-center">
+
+                <div className="flex flex-wrap gap-4 justify-center mt-11">
 
                   {
                     products.map((product)=>{
