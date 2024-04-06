@@ -28,16 +28,17 @@ const PgMenu = () => {
 
 
     return (
-        <div className="w-full h-full flex bg-[rgba(23,23,23,.5)] justify-center items-center overflow-y-auto">
+        <div className="w-full h-full  bg-[rgba(23,23,23,.5)]flex justify-center items-center overflow-y-auto">
             <div className="w-full h-full flex flex-col">
                 <div className="w-full flex flex-col">
                      {role === 'admin' ? <NavBarAdmin/> : <NavBarCliente/>}
                      {role === 'cajero' ? <NavbarCashier/> :  " "}
                 </div>
-                <div className="flex flex-col items-end">
-                        <MenuOption  setUrl={setUrl}/>
+                <div  >
+                {role === 'admin' ? <div className="flex flex-col items-end mt-14"><MenuOption  setUrl={setUrl}/></div>: ""}
+                {role === 'cajero' ? <div className="flex flex-col items-end "><MenuOption  setUrl={setUrl}/></div>: ""}
                 </div>
-                <div className="flex flex-wrap gap-4 justify-center mt-12">
+                <div className="flex flex-wrap gap-4 justify-center ">
 
                   {
                     products.map((product)=>{
