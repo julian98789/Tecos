@@ -3,6 +3,7 @@ import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { useForm } from "react-hook-form"
 import useSession from "@/hook/useSession";
+import Swal from "sweetalert2";
 
 const LoginForm = () =>{
     const {login} = useSession()
@@ -34,6 +35,17 @@ const LoginForm = () =>{
         //quiero exporta la data a todass mi page ?
     }
 
+    const error = () =>{
+        Swal.fire({
+            position: 'top-center',
+            title: 'Error',
+            text: 'No se ha podido iniciar sesion',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2500
+         })      
+    }
+
     const processData = (data) =>{
         if (data.length == 1) {  
             login(data[0].rol)
@@ -47,8 +59,7 @@ const LoginForm = () =>{
                     break;
             }
         } else {
-            //no pudo iniciase la sssion
-            console.log(data);
+            error();
         }
         
     }
