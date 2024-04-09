@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import NavBarCliente from "@/components/custom/navbar/NavBarCliente";
 import MenuOption from '@/components/custom/MenuCliente/MenuOption/MenuOption';
-import Card from '@/components/custom/MenuCliente/vista/Card';  // Importa el componente Card para mostrar cada producto
+import Card from '@/components/custom/MenuCliente/Card/Card';  // Importa el componente Card para mostrar cada producto
 import useStore from "@/hook/useSession.js";
 import NavBarAdmin from '@/components/custom/navbar/navbarAdmin/NavBarAdmin';
 import NavbarCashier from '@/components/custom/navbar/nabvarCashier/NavBarCashier';
@@ -37,8 +37,9 @@ const PgMenu = () => {
                 <div  >
                 {role === 'admin' ? <div className="flex flex-col items-end mt-14"><MenuOption  setUrl={setUrl}/></div>: ""}
                 {role === 'cajero' ? <div className="flex flex-col items-end "><MenuOption  setUrl={setUrl}/></div>: ""}
+                {role !== 'cajero' && role !== 'admin' ? <div className="flex flex-col items-end "><MenuOption  setUrl={setUrl}/></div>: ""}
                 </div>
-                <div className="flex flex-wrap gap-4 justify-center ">
+                <div className="flex flex-wrap gap-4 justify-center">
 
                   {
                     products.map((product)=>{
