@@ -6,6 +6,9 @@ import Swal from 'sweetalert2';
 const MenuShopping = ({ onItemRemoved }) => {
     const { getCart, removeFromCart } = useCart();
     const [subtotal, setSubtotal] = useState(0);
+    const mesa = getCart();
+    mesa.filter(item => !item.hasOwnProperty('id_mesa'),);
+
     const calculateSubtotal = () => {
         const cart = getCart();
         const total = cart
@@ -49,22 +52,22 @@ const MenuShopping = ({ onItemRemoved }) => {
        })  
           return;
       }
-        const cart = getCart();
+      const cart = getCart();
+    const productos = cart
+        .filter(item => item.id && item.cantidad && item.precio) // Filtrar elementos con todas las propiedades necesarias
+        .map(item => ({
+            id_producto: item.id,
+            cantidad_producto: item.cantidad,
+            valor_unitario: item.precio
+        }));
 
-        // Crear el payload con los datos del carrito
-        const payload = {
-          productos: cart.map(item => ({
-           
-              id_producto: item.id,
-              cantidad_producto: item.cantidad,
-              valor_unitario: item.precio,
-          })),
-          valor_total: subtotal,
-          estado: "pagado",
-          mesa_id: 1, // ID de la mesa seleccionada por el cliente
-          
-      };
-      
+    const payload = {
+        productos,
+        valor_total: subtotal,
+        estado: "pagado",
+        mesa_id: mesa[0].id_mesa,
+        valor_pagado: inputAmount
+    };
       fetch('/api/order', {
           method: 'POST',
           headers: {
@@ -130,7 +133,7 @@ const MenuShopping = ({ onItemRemoved }) => {
                                     
                                     {item.nombre} - Cantidad: {item.cantidad}
                                     <div className='flex flex-row'>
-                                        Precio: ${item.precio}
+                                        Precio: ${item.precio.toLocaleString()}
                                         <button onClick={() => handleRemoveFromCart(index)} className='text-red-500 ml-2'>Eliminar</button>
                                     </div>
                                 </>
@@ -142,9 +145,9 @@ const MenuShopping = ({ onItemRemoved }) => {
             </div>
 
             <div className='flex flex-col space-y-3 pt-6'>
-                <p>Subtotal: ${subtotal}</p>
-                <input
-                id='inputAmount'
+                <p>Subtotal: ${subtotal.toLocaleString()}</p>
+                <input className='pl-3 h-8'
+                    id='inputAmount'
                     type="number"
                     placeholder="Ingrese la cantidad a pagar"
                 />

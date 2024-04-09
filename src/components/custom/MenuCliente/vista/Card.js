@@ -19,7 +19,7 @@ const Card = ({ product , onAddToCart}) => {
   
 
     return (
-        <div className="bg-neutral-800 rounded-md shadow-md text-neutral-100 p-4 w-60">
+        <div className="relative h-[425px] bg-neutral-800 rounded-md shadow-md text-neutral-100 p-4 w-60">
             <img src={product.imagen} alt={product.nombre} className="w-full h-48 object-cover mb-4" />
             <h2>{product.nombre}</h2>
             <p className="text-gray-100 mb-4">{product.descripcion}</p>
@@ -27,7 +27,7 @@ const Card = ({ product , onAddToCart}) => {
                 <span className="text-sm font-medium">Precio: ${product.precio}</span>
             </div>
             <span className="text-sm font-medium">Categoría: {product.categoria}</span>
-            <div className="flex items-center mt-4 ">
+            <div className="absolute bottom-3 left-3 flex items-center mt-4 ">
                 <input
                     type="number"
                     min="1"

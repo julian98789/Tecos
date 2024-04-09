@@ -9,12 +9,12 @@ export const insertOrder = async (data) => {
     let resultPedidoId = null;
   
     try {
-        const {productos, valor_total, estado, mesa_id } = data;
+        const {productos, valor_total, estado, mesa_id ,valor_pagado} = data;
 
         // Primero, insertamos en la tabla pedido
-        sql1 = `INSERT INTO pedido ( valor_total, fecha, hora, estado, mesa_id)
+        sql1 = `INSERT INTO pedido ( valor_total, fecha, hora, estado, mesa_id,valor_pagado)
                 VALUES
-                ( ${valor_total}, CURDATE(), CURTIME(), '${estado}', ${mesa_id})`;
+                ( ${valor_total}, CURDATE(), CURTIME(), '${estado}', ${mesa_id},${valor_pagado})`;
                
          await pool.query(sql1);
         
@@ -39,7 +39,7 @@ export const insertOrder = async (data) => {
             "description": err
         };
         console.log(error)
-        console.log(pedidoId);
+        console.log(data);
     }
 
     let response = {
