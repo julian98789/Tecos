@@ -1,40 +1,58 @@
 import pool from "@/db/MysqlConection";
 
-export const insertOrder = async  (data) =>{
-    let result =true;
-    let error = false
-    let sql = null
-    let sql2 = null
+export const insertOrder = async (data) => {
+    let result = true;
+    let error = false;
+    let sql1 = null;
+    let sql2 = null;
+    let pedidoId = null;
+    let resultPedidoId = null;
+  
     try {
-        const {unidad_producto, valor_unitario, valor_total, estado,id_producto, mesa_id,cantida_producto } = data; 
-        sql = `INSERT INTO pedido (unidad_producto, valor_total, fecha, hora, estado, mesa_id)
-        VALUES
-            (${unidad_producto},${valor_total}, CURDATE(), CURTIME(), ${estado}, ${mesa_id})`;
-        
-        sql2=`INSERT INTO pedido_producto (id_pedido, id_producto,cantidad_producto,valor_unitario)
-        VALUES
-            (1, ${id_producto},1,${valor_unitario}),  -- Producto con ID 1
-            (1, ${id_producto},1,${valor_unitario}),  -- Producto con ID 2
-            (1, ${id_producto},2,${valor_unitario});  -- Producto con ID 3`
+        const {productos, valor_total, estado, mesa_id } = data;
 
-        await pool.query(sql,sql2);
+        // Primero, insertamos en la tabla pedido
+        sql1 = `INSERT INTO pedido ( valor_total, fecha, hora, estado, mesa_id)
+                VALUES
+                ( ${valor_total}, CURDATE(), CURTIME(), '${estado}', ${mesa_id})`;
+               
+         await pool.query(sql1);
         
+         resultPedidoId = 'SELECT LAST_INSERT_ID() as pedido_id';
+         pedidoId = await pool.query(resultPedidoId);
+         pedidoId = pedidoId[0][0].pedido_id;
+         
+        productos.forEach(async (producto) => {
+            const { id_producto, cantidad_producto, valor_unitario } = producto;
+        sql2 = `INSERT INTO pedido_producto (id_pedido, id_producto, cantidad_producto, valor_unitario)
+                VALUES
+                (${pedidoId}, ${id_producto}, ${cantidad_producto}, ${valor_unitario})`;
+
+        await pool.query(sql2);
+        
+    });
     } catch (err) {
-        result= false;
+        result = false;
         error = {
-            "sql" : sql,
+            "sql1": sql1,
+            "sql2": sql2,
             "description": err
-        }
-        console.log(error)  
+        };
+        console.log(error)
+        console.log(pedidoId);
     }
+
     let response = {
-        "preocess": 'insert order',
+        "process": 'insert order',
         "status": true,
         "result": result,
-        "error": error
-    }
-    return response
-}
+        "error": error,
+        pedidoId
+    };
+
+    return response;
+};
+
 
 export const selectOrder = async () =>{
     let result =false;

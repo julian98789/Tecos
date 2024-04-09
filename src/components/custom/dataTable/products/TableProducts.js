@@ -1,5 +1,4 @@
 'use client'
-import { FaEdit } from "react-icons/fa";
 import { IoMdRemoveCircle } from "react-icons/io";
 import Swal from "sweetalert2";
 

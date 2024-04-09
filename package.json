@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",
+    "axios": "^1.6.8",
     "browserslist": "^4.23.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",

@@ -1,10 +1,11 @@
+'use client'
 import React, { useState } from "react";
 import useCart from "@/hook/useCart";
 
-const Card = ({ product }) => {
+const Card = ({ product , onAddToCart}) => {
     const { addToCart,getCart } = useCart();
     const [cantidad, setCantidad] = useState(1); // Estado para almacenar la cantidad del producto
-
+    
     const handleChange = (event) => {
         // Actualiza la cantidad cuando cambia el valor del campo de entrada
         setCantidad(parseInt(event.target.value));
@@ -13,8 +14,10 @@ const Card = ({ product }) => {
     const handleClick = () => {
         // Agrega el producto al carrito con la cantidad seleccionada
         addToCart({ ...product, cantidad });
+        onAddToCart();
     };
-console.log(getCart())
+  
+
     return (
         <div className="bg-neutral-800 rounded-md shadow-md text-neutral-100 p-4 w-60">
             <img src={product.imagen} alt={product.nombre} className="w-full h-48 object-cover mb-4" />

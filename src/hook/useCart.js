@@ -1,3 +1,4 @@
+'use client'
 const useCart = () => {
     // Comprobar si existe un carrito al cargar la página
     if (!sessionStorage.getItem('cart')) {
