@@ -1,11 +1,13 @@
 'use client'
 
+import { GiConsoleController } from "react-icons/gi";
+
 const MenuOption = ({setUrl}) =>{
 
 
 const changeUrl= (value) =>{
-    console.log('se ejecuto')
     setUrl(value);
+    console.log(value)
 }
         return <div>
             <div className="inline-flex rounded-md shadow-sm px-16 py-5 " role="group">

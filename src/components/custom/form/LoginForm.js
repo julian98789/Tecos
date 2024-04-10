@@ -1,11 +1,13 @@
 'use client'
-import { redirect } from "next/navigation"
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { useForm } from "react-hook-form"
 import useSession from "@/hook/useSession";
+import Swal from "sweetalert2";
+
 const LoginForm = () =>{
     const {login} = useSession()
+
 
     const {
         register,
@@ -29,15 +31,35 @@ const LoginForm = () =>{
          await fetch("/api/login",options)  // Realiza una solicitud HTTP POST a la ruta "/api/login" utilizando las opciones definidas.
         .then(res=>res.json())    // Convierte la respuesta a formato JSON.
         .then(data=>processData(data))   // Imprime los datos de la respuesta en la consola.
+        
+        //quiero exporta la data a todass mi page ?
+    }
+
+    const error = () =>{
+        Swal.fire({
+            position: 'top-center',
+            title: 'Error',
+            text: 'No se ha podido iniciar sesion',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2500
+         })      
     }
 
     const processData = (data) =>{
         if (data.length == 1) {  
-            login()
-            window.location.href = "/admin"
+            login(data[0].rol)
+            switch (data[0].rol) {
+                case 'admin':
+                    window.location.href = "/admin"
+                    
+                    break;
+                default:
+                    window.location.href = "/cashier"
+                    break;
+            }
         } else {
-            //no pudo iniciase la sssion
-            console.log(data);
+            error();
         }
         
     }

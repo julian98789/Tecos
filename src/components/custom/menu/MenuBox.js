@@ -50,7 +50,7 @@ const MenuBox = () =>{
                         <MdTableRestaurant className="text-3xl"/>
                     </div>
                     <div className="px-5">
-                    <a href="#">Mesa</a> 
+                    <a href="/">Mesa</a> 
                     </div>
                 </div>         
 

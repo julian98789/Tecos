@@ -1,55 +1,98 @@
 import pool from "@/db/MysqlConection";
 
-export const insertOrder = async  (data) =>{
-    let result =true;
-    let error = false
-    let sql = null
+export const insertOrder = async (data) => {
+    let result = true;
+    let error = false;
+    let sql1 = null;
+    let sql2 = null;
+    let pedidoId = null;
+    let resultPedidoId = null;
+  
     try {
-        const {unidad_producto, valor_unitario, valor_total, fecha, hora, estado, producto_id, mesa_id } = data; 
-        sql = `INSERT INTO  pedido (unidad_producto, valor_unitario, valor_total, fecha, hora, estado, producto_id, mesa_id ) 
-        VALUE ('${unidad_producto}', '${valor_unitario}', '${valor_total}', '${fecha}','${hora}','${estado}', '${producto_id}','${mesa_id}' )`;   
-        await pool.query(sql);
+        const {productos, valor_total, estado, mesa_id ,valor_pagado} = data;
+
+        // Primero, insertamos en la tabla pedido
+        sql1 = `INSERT INTO pedido ( valor_total, fecha, hora, estado, mesa_id,valor_pagado)
+                VALUES
+                ( ${valor_total}, CURDATE(), CURTIME(), '${estado}', ${mesa_id},${valor_pagado})`;
+               
+         await pool.query(sql1);
         
+         resultPedidoId = 'SELECT LAST_INSERT_ID() as pedido_id';
+         pedidoId = await pool.query(resultPedidoId);
+         pedidoId = pedidoId[0][0].pedido_id;
+         
+        productos.forEach(async (producto) => {
+            const { id_producto, cantidad_producto, valor_unitario } = producto;
+        sql2 = `INSERT INTO pedido_producto (id_pedido, id_producto, cantidad_producto, valor_unitario)
+                VALUES
+                (${pedidoId}, ${id_producto}, ${cantidad_producto}, ${valor_unitario})`;
+
+        await pool.query(sql2);
+        
+    });
     } catch (err) {
-        result= false;
+        result = false;
         error = {
-            "sql" : sql,
+            "sql1": sql1,
+            "sql2": sql2,
             "description": err
-        }
-        console.log(error)  
+        };
+        console.log(error)
+        console.log(data);
     }
+
     let response = {
-        "preocess": 'insert order',
+        "process": 'insert order',
         "status": true,
         "result": result,
-        "error": error
-    }
-    return response
-}
+        "error": error,
+        pedidoId
+    };
 
-export const selectOrder = async () =>{
-    let result =false;
-    let error = false
+    return response;
+};
+
+
+export const selectOrder = async () => {
+    let result = false;
+    let error = false;
    
-    try{
-        let sql = 'SELECT  * FROM  pedido'
+    try {
+        let sql = `
+        SELECT p.id AS pedido_id, p.valor_pagado, p.valor_total, p.fecha, p.hora, p.estado AS estado_pedido,
+        m.id AS mesa_id, m.descripcion AS mesa_descripcion, m.estado AS estado_mesa,
+        GROUP_CONCAT(pp.id_producto) AS id_productos,
+        GROUP_CONCAT(pp.cantidad_producto) AS cantidades_productos,
+        GROUP_CONCAT(pp.valor_unitario) AS valores_unitarios,
+        GROUP_CONCAT(pr.nombre) AS nombres_productos,
+        GROUP_CONCAT(pr.descripcion) AS descripciones_productos,
+        GROUP_CONCAT(pr.categoria) AS categorias_productos,
+        GROUP_CONCAT(pr.precio) AS precios_productos
+ FROM pedido p
+ JOIN pedido_producto pp ON p.id = pp.id_pedido
+ JOIN productos pr ON pp.id_producto = pr.id
+ JOIN mesa m ON p.mesa_id = m.id
+ GROUP BY p.id;
+        `;
         let [rows] = await pool.query(sql);
-        result =rows
-    }catch (err){
+        result = rows;
+    } catch (err) {
         error = {
-            "sql" : sql,
+            "sql": sql,
             "description": err
-        }
-        console.log(error)  
+        };
+        console.log(error);
     }
+    
     let response = {
-        "preocess": 'select order',
+        "process": 'select order',
         "status": true,
         "result": result
-
-    }
-    return response
-}
+    };
+    
+    return response;
+};
 
 export const selectOrderId = async (id) =>{
     let result =false;

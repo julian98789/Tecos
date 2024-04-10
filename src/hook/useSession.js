@@ -1,15 +1,20 @@
 'use client'
+const useSession = () => {
+    const login = (userData) => {
+        sessionStorage.setItem('logged', true);
+        sessionStorage.setItem('userData', JSON.stringify(userData));
+    };
 
-const useSession = ()=>{
-
-    const login = () =>{
-        sessionStorage.setItem('logged', true)
-
-    }
-    const logout = () =>{
+    const logout = () => {
         sessionStorage.clear();
-    }
-    
-  return { login, logout }
-}
-export default useSession
+    };
+
+    const getUserData = () => {
+        const userData = sessionStorage.getItem('userData');
+        return userData ? JSON.parse(userData) : null;
+    };
+
+    return { login, logout, getUserData };
+};
+
+export default useSession;

@@ -35,16 +35,14 @@ const FormNewProduct = () =>{
             },
             body: JSON.stringify(dataUser)   
         }
-        console.log(dataUser)
+        //console.log(dataUser)
          await fetch("/api/products",options)  
 
         .then(res=>res.json())
-        .then(data=>processData(data))    
-          
+        .then(data=>processData(data)) 
+       
     } 
   
-    
-    
     const convertirImagenABase64 = (imagen) => {
         return new Promise((resolve, reject) => {
             // Crear un nuevo objeto FileReader
@@ -74,7 +72,7 @@ const FormNewProduct = () =>{
 
     const exito = () => {
         Swal.fire({
-          position: 'top-center',
+          position: 'center',
           icon: 'success',
           title: 'Registro Exitoso',
           showConfirmButton: false,
@@ -84,7 +82,7 @@ const FormNewProduct = () =>{
 
       const error = () =>{
         Swal.fire({
-            position: 'top-center',
+            position: 'center',
             title: 'Error',
             text: 'Se ha detectado un error',
             icon: 'error',
@@ -94,13 +92,14 @@ const FormNewProduct = () =>{
     }
       
       const processData = (data) => {
-        if (data.result) {
+        if (data) {
           exito()
+          console.log(data.result)
         }else{
           error()
         }
       }
-       
+   
         const [formularioAbierto, setFormularioAbierto] = useState(true);
 
         const cerrarFormulario = () => {

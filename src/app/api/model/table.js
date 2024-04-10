@@ -4,8 +4,8 @@ export const insertTable = async  (data) =>{
     let result =true;
     let error = false
     try {
-        const { descripcion } = data; 
-        let sql = `INSERT INTO  mesa (descripcion) VALUE ('${descripcion}' )`;   
+        const { descripcion, estado } = data; 
+        let sql = `INSERT INTO  mesa (descripcion, estado) VALUES ('${descripcion}', '${estado}')`;  
         await pool.query(sql);
         
     } catch (err) {
