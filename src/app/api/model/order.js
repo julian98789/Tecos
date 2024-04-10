@@ -54,29 +54,45 @@ export const insertOrder = async (data) => {
 };
 
 
-export const selectOrder = async () =>{
-    let result =false;
-    let error = false
+export const selectOrder = async () => {
+    let result = false;
+    let error = false;
    
-    try{
-        let sql = 'SELECT  * FROM  pedido'
+    try {
+        let sql = `
+        SELECT p.id AS pedido_id, p.valor_pagado, p.valor_total, p.fecha, p.hora, p.estado AS estado_pedido,
+        m.id AS mesa_id, m.descripcion AS mesa_descripcion, m.estado AS estado_mesa,
+        GROUP_CONCAT(pp.id_producto) AS id_productos,
+        GROUP_CONCAT(pp.cantidad_producto) AS cantidades_productos,
+        GROUP_CONCAT(pp.valor_unitario) AS valores_unitarios,
+        GROUP_CONCAT(pr.nombre) AS nombres_productos,
+        GROUP_CONCAT(pr.descripcion) AS descripciones_productos,
+        GROUP_CONCAT(pr.categoria) AS categorias_productos,
+        GROUP_CONCAT(pr.precio) AS precios_productos
+ FROM pedido p
+ JOIN pedido_producto pp ON p.id = pp.id_pedido
+ JOIN productos pr ON pp.id_producto = pr.id
+ JOIN mesa m ON p.mesa_id = m.id
+ GROUP BY p.id;
+        `;
         let [rows] = await pool.query(sql);
-        result =rows
-    }catch (err){
+        result = rows;
+    } catch (err) {
         error = {
-            "sql" : sql,
+            "sql": sql,
             "description": err
-        }
-        console.log(error)  
+        };
+        console.log(error);
     }
+    
     let response = {
-        "preocess": 'select order',
+        "process": 'select order',
         "status": true,
         "result": result
-
-    }
-    return response
-}
+    };
+    
+    return response;
+};
 
 export const selectOrderId = async (id) =>{
     let result =false;
