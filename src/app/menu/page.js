@@ -45,9 +45,9 @@ const cartItemCount = cartItemsWithoutMesa.length;
       <Sheet>
         <div className="w-full h-full  bg-[rgba(23,23,23,.5)]flex justify-center items-center overflow-y-auto">
             <div className="w-full h-full flex flex-col">
-                <div className="w-full flex flex-col">
-                     {role === 'admin' ? <NavBarAdmin/> : <NavBarCliente/>}
-                     {role === 'cajero' ? <NavbarCashier/> :  " "}
+                <div >
+                     {role === 'admin' ? <div className="w-full flex flex-col fixed top-0 left-0 right-0 z-50"><NavBarAdmin /> </div> :<div className= "w-full flex flex-col"><NavBarCliente /></div> }
+                     {role === 'cajero' ? <div className="w-full flex flex-col fixed top-0 left-0 right-0 z-50"> <NavbarCashier/> </div>:  " "}
                 </div>
                 <div className="flex flex-col items-end " >
                 {role === 'admin' ? <div className="flex flex-col items-end mt-14"><MenuOption  setUrl={setUrl}/></div>: ""}
