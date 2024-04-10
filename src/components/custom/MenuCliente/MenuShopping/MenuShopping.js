@@ -1,4 +1,3 @@
-'use client'
 import React, { useState, useEffect } from 'react';
 import useCart from '@/hook/useCart';
 import Swal from 'sweetalert2';
@@ -120,7 +119,7 @@ const MenuShopping = ({ onItemRemoved }) => {
   }
 
     return (
-        <div>
+        <div className="max-h-[540px] overflow-y-auto">
             <h2 className='text-slate-400'>Resumen de compra</h2>
             <div className='gap-5'>
                 <ul className='pt-6'>
@@ -130,11 +129,12 @@ const MenuShopping = ({ onItemRemoved }) => {
                                 <>{<>Mesa: {item.id_mesa}<br/></>}</>
                             ) : (
                                 <>
-                                    
-                                    {item.nombre} - Cantidad: {item.cantidad}
-                                    <div className='flex flex-row'>
-                                        Precio: ${item.precio.toLocaleString()}
-                                        <button onClick={() => handleRemoveFromCart(index)} className='text-red-500 ml-2'>Eliminar</button>
+                                    <div className="rounded-md border border-gray-300 p-3 mb-3">
+                                        {item.nombre} - Cantidad: {item.cantidad}
+                                        <div className='flex flex-row'>
+                                            Precio: ${item.precio.toLocaleString()}
+                                            <button onClick={() => handleRemoveFromCart(index)} className='text-red-500 ml-2'>Eliminar</button>
+                                        </div>
                                     </div>
                                 </>
                             )}
@@ -151,13 +151,12 @@ const MenuShopping = ({ onItemRemoved }) => {
                     type="number"
                     placeholder="Ingrese la cantidad a pagar"
                 />
-                <button onClick={handleCheckout} className='bg-green-500 rounded-lg'>Realizar pago</button>
+                <button onClick={handleCheckout} className='bg-green-500 rounded-lg h-8'>Realizar pago</button>
               
             </div>
         </div>
     );
 };
  
-
 
 export default MenuShopping;

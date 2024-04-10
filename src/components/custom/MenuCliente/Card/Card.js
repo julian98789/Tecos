@@ -14,6 +14,7 @@ const Card = ({ product , onAddToCart}) => {
     const handleClick = () => {
         // Agrega el producto al carrito con la cantidad seleccionada
         addToCart({ ...product, cantidad });
+        setCantidad(1);
         onAddToCart();
     };
   
