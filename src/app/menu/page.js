@@ -21,7 +21,7 @@ const PgMenu = () => {
   const { getCart } = useCart();
   console.log(getCart())
   
-  if(!getUserData()){
+  if(getCart().length === 0){
     window.location.href = '/';
   }
   
