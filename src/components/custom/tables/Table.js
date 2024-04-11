@@ -11,6 +11,7 @@ const Table = ({ tables, updateTableState }) => {
     const {addToCart,getCart} = useCart();
     const router = useRouter()
 
+
     useEffect(() => {
         setOcupada(tables.estado === 'ocupada');
     }, [tables.estado]);
@@ -34,7 +35,10 @@ const Table = ({ tables, updateTableState }) => {
             await updateTableState(tables.id);
             addToCart({id_mesa: tables.id } )
             setClicked(true);
-             router.push(`/menu`);
+           
+                router.push(`/menu`);
+            
+            
         }
     };
 
