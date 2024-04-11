@@ -7,11 +7,11 @@ import NavBarAdmin from "@/components/custom/navbar/navbarAdmin/NavBarAdmin";
 import NavbarCashier from "@/components/custom/navbar/nabvarCashier/NavBarCashier";
 
 
+
 export default function Home() {
 
 	const {logged, user, login, logout,getUserData} = useStore()
-	const [val , setVal] = useState(null)
-	
+
 	useEffect(()=>{
 
 		console.log(logged)
