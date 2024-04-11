@@ -21,6 +21,10 @@ const PgMenu = () => {
   const { getCart } = useCart();
   console.log(getCart())
   
+  if(!getUserData()){
+    window.location.href = '/';
+  }
+  
   const recibirDatos = async () => {
     const response = await fetch(url);
     const data = await response.json();
