@@ -10,7 +10,7 @@ import {FiShoppingCart} from 'react-icons/fi';
 import useCart  from '@/hook/useCart';
 import MenuShopping from '@/components/custom/MenuCliente/MenuShopping/MenuShopping';
 import { Sheet, SheetTrigger,SheetContent,SheetClose,SheetFooter,SheetDescription,SheetHeader,SheetTitle } from '@/components/ui/sheet';
-
+import { FiX } from 'react-icons/fi';
 
 
 const PgMenu = () => {
@@ -18,7 +18,7 @@ const PgMenu = () => {
   const [products, setProducts] = useState([])
   const [url, setUrl]= useState('/api/products')
   const [cartItems, setCartItems] = useState(0);
-  const { getCart } = useCart();
+  const { getCart,clearCart } = useCart();
   console.log(getCart())
   
   if(getCart().length === 0){
@@ -59,7 +59,6 @@ const cartItemCount = cartItemsWithoutMesa.length;
                 {role !== 'cajero' && role !== 'admin' ? <div className="flex flex-col items-end "><MenuOption  setUrl={setUrl}/></div>: ""}
                 </div>
                 <div className="flex flex-wrap gap-4 justify-center">
-
                   {
                     products.map((product)=>{
                       return <Card  

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import useCart from '@/hook/useCart';
 import Swal from 'sweetalert2';
 
+
 const MenuShopping = ({ onItemRemoved }) => {
-    const { getCart, removeFromCart } = useCart();
+    const { getCart, removeFromCart,clearCart,addToCart } = useCart();
     const [subtotal, setSubtotal] = useState(0);
     const mesa = getCart();
     mesa.filter(item => !item.hasOwnProperty('id_mesa'),);
@@ -113,11 +114,24 @@ const MenuShopping = ({ onItemRemoved }) => {
   const processData = (data) => {
       if (data) {
         exito();
+        handleDeleteCart();
+       
       } else {
           error();
       }
   }
-
+  const handleDeleteCart = () => {
+    const cart = getCart();
+    const cartWithoutMesa = cart.filter(item => item.hasOwnProperty('id_mesa'));
+    clearCart(); // Borra todos los productos del carrito
+    
+    // Vuelve a agregar la mesa al carrito
+    cartWithoutMesa.forEach(item => addToCart(item));
+    
+    // Actualiza el subtotal
+    onItemRemoved();
+    calculateSubtotal();
+  }
     return (
         <div className="max-h-[540px] overflow-y-auto">
             <h2 className='text-slate-400'>Resumen de compra</h2>
@@ -151,8 +165,8 @@ const MenuShopping = ({ onItemRemoved }) => {
                     type="number"
                     placeholder="Ingrese la cantidad a pagar"
                 />
-                <button onClick={handleCheckout} className='bg-green-500 rounded-lg h-8'>Realizar pago</button>
-              
+                <button onClick={handleCheckout} className='bg-green-600 rounded-lg h-8 text-white hover:bg-green-700'>Realizar pago</button>
+                <button onClick={handleDeleteCart} className='bg-red-600 rounded-lg h-8 text-white hover:bg-red-700'>Cancelar Pedido</button>
             </div>
         </div>
     );
