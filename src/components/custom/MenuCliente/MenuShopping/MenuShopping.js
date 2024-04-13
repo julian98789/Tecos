@@ -50,8 +50,21 @@ const MenuShopping = ({ onItemRemoved }) => {
           showConfirmButton: false,
           timer: 2500
        })  
+       
           return;
       }
+      if (subtotal == 0) {
+        Swal.fire({
+          position: 'top-center',
+          text: 'No hay productos en el carrito',
+          icon: 'error',
+          showConfirmButton: false,
+          timer: 2500
+       })  
+       
+          return;
+      }
+
       const cart = getCart();
     const productos = cart
         .filter(item => item.id && item.cantidad && item.precio) // Filtrar elementos con todas las propiedades necesarias
