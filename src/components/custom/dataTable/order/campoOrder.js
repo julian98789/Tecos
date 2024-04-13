@@ -84,6 +84,7 @@ const CampoOrder = ({ orders, updateCampoOrder }) => {
                         ))}
                         <Text style={styles.text}>Valor Pagado: ${orders.valor_pagado}</Text>
                         <Text style={styles.text}>Valor Total: ${orders.valor_total}</Text>
+                        <Text style={styles.text}>Cambio: ${cambio}</Text>
                         <Text style={styles.text}>Estado del Pedido: {orders.estado_pedido}</Text>
                         {/* Otros detalles de la orden... */}
                     </View>

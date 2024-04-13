@@ -21,9 +21,10 @@ const PgMenu = () => {
   const { getCart,clearCart } = useCart();
   console.log(getCart())
   
-  if(getCart().length === 0){
+  /*if(getCart().length === 0){
     window.location.href = '/';
   }
+  */
   
   const recibirDatos = async () => {
     const response = await fetch(url);
