@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const TableProducts = ({products}) => {
     
     const eliminarProducto = async (productId) => {
-
+        
         const options = {   
             method: 'DELETE',  
             header: {  

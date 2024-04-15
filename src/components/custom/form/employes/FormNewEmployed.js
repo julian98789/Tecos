@@ -1,80 +1,73 @@
 'use client'
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { HiOutlineIdentification } from "react-icons/hi";
 import { MdOutlineEmail } from "react-icons/md";
 import { CgPassword } from "react-icons/cg";
 
- 
-const FormNewEmployed = () =>{
-    
-    const { 
-        register,
-        handleSubmit,
-        watch,
-        formState: { errors },
-    } = useForm()
+const FormNewEmployed = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset // Método para limpiar el formulario
+  } = useForm();
 
-    const enviarDatos = async (dataUser) =>{   
-        const options = {   
-            method: 'POST',  
-            header: {  
-                'Content-Type': 'application/json'  
-            },
-            body: JSON.stringify(dataUser)   
-        }
-        
-         await fetch("/api/user",options)  
-        .then(res=>res.json()) 
-        .then(data=>processData(data))    
-    }    
-      const exito = () => {
-        Swal.fire({
-          position: 'top-center',
-          icon: 'success',
-          title: 'Registro Exitoso',
-          showConfirmButton: false,
-          timer: 1500
-        });
-      }   
+  const enviarDatos = async (dataUser) => {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dataUser)
+    };
 
-      const error = () =>{
-        Swal.fire({
-            position: 'top-center',
-            title: 'Error',
-            text: 'Se ha detectado un error',
-            icon: 'error',
-            showConfirmButton: false,
-            timer: 2500
-         })      
-    }
+    await fetch("/api/user", options)
+      .then(res => res.json())
+      .then(data => processData(data));
+  };
 
-  
-      
+  const exito = () => {
+    Swal.fire({
+      position: 'top-center',
+      icon: 'success',
+      title: 'Registro Exitoso',
+      showConfirmButton: false,
+      timer: 1500
+    });
+  };
+
+  const error = (mensaje) => {
+    Swal.fire({
+      position: 'top-center',
+      title: 'Error',
+      text: mensaje,
+      icon: 'error',
+      showConfirmButton: false,
+      timer: 2500
+    });
+  };
+
   const processData = (data) => {
     if (data.result) {
       exito();
+      reset(); // Limpiar el formulario después del éxito
     } else {
-      error();
+      error(data.message); // Mostrar mensaje de error específico recibido del servidor
     }
-  }
+  };
 
-      
+  const [formularioAbierto, setFormularioAbierto] = useState(true);
 
-       
-        const [formularioAbierto, setFormularioAbierto] = useState(true);
+  const cerrarFormulario = () => {
+    setFormularioAbierto(false);
+  };
 
-        const cerrarFormulario = () => {
-          setFormularioAbierto(false);
-        }
-
-      
-
-    return (
-      <div>
-         {formularioAbierto && (
+  return (
+    <div>
+      {formularioAbierto && (
         <form onSubmit={handleSubmit(enviarDatos)} className="bg-[rgba(17,17,16,0.92)] border rounded-2xl p-8 flex justify-center items-center flex-col space-y-6 pb-14 w-[700px]">
           <div className="text-center text-2xl text-white pt-3">Formulario de registro de empleados</div>
       
@@ -87,16 +80,16 @@ const FormNewEmployed = () =>{
             <div className="flex justify-center items-center flex-row gap-5">
               <div className="flex justify-between items-center flex-col">
                 <div className=" relative">
-                  <input {...register("nombre",{required: true })}  autoComplete="off" className="bg-neutral-300 border rounded w-[240px] h-9 outline-none pl-10 placeholder:text-slate-600"  placeholder="Ingrese su nombre"/>
+                  <input {...register("nombre",{required: "Este espacio es requerido"})}  autoComplete="off" className="bg-neutral-300 border rounded w-[240px] h-9 outline-none pl-10 placeholder:text-slate-600"  placeholder="Ingrese su nombre"/>
                   <FaRegUser className="w-7 absolute top-[10px] left-1 text-slate-800"/>
-                  {errors.nombre && <span className="text-[#ff0000] text-xs">Este espacio es requerido</span>}
+                  {errors.nombre && <span className="text-[#ff0000] text-xs">{errors.nombre.message}</span>}
                 </div>
               </div>
               <div className="flex items-center flex-col">
                 <div className=" relative">
-                  <input {...register("apellido",{ required: true })}  autoComplete="off" className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-10 placeholder:text-slate-600" placeholder="Ingrese su apellido"/>
+                  <input {...register("apellido",{ required: "Este espacio es requerido" })}  autoComplete="off" className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-10 placeholder:text-slate-600" placeholder="Ingrese su apellido"/>
                   <FaRegUser className="w-7 absolute top-[10px] left-1 text-slate-800"/>
-                  {errors.apellido && <span className="text-[#ff0000] text-xs">Este espacio es requerido</span>}
+                  {errors.apellido && <span className="text-[#ff0000] text-xs">{errors.apellido.message}</span>}
                 </div>
               </div>
             </div>
@@ -111,16 +104,22 @@ const FormNewEmployed = () =>{
             <div className="flex justify-items-start flex-row gap-5">
               <div className="flex items-center flex-col">
                 <div className=" relative">
-                  <input {...register("cedula",{ required: true })}  autoComplete="off" className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-10 placeholder:text-slate-600 text-start" placeholder="Ingrese identificacion"/>
+                  <input {...register("cedula",{ required: "Este espacio es requerido" })}  autoComplete="off" className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-10 placeholder:text-slate-600 text-start" placeholder="Ingrese identificacion"/>
                   <HiOutlineIdentification className="w-7 absolute top-[10px] left-1 text-slate-800"/>
-                  {errors.cedula && <span className="text-[#ff0000] text-xs">Este espacio es requerido</span>}
+                  {errors.cedula && <span className="text-[#ff0000] text-xs">{errors.cedula.message}</span>}
                 </div>
               </div>
               <div className="flex items-center flex-col">
                 <div className=" relative">
-                  <input {...register("correo",{ required: true })} name="correo" autoComplete="off" className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-10 placeholder:text-slate-600 text-start" placeholder="Ingrese Email"/>
+                  <input {...register("correo",{ 
+                      required: "Este espacio es requerido",
+                      pattern: {
+                        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                        message: "Ingrese un correo válido"
+                      }
+                   })} name="correo" autoComplete="off" className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-10 placeholder:text-slate-600 text-start" placeholder="Ingrese Email"/>
                   <MdOutlineEmail className="w-7 absolute top-[10px] left-1 text-slate-800"/>
-                  {errors.correo && <span className="text-[#ff0000] text-xs">Este espacio es requerido</span>}
+                  {errors.correo && <span className="text-[#ff0000] text-xs">{errors.correo.message}</span>}
                 </div>
               </div>
             </div>
@@ -135,14 +134,24 @@ const FormNewEmployed = () =>{
             <div className="flex justify-center items-center flex-row gap-5">
               <div className="flex items-center flex-col">
               <div className=" relative">
-                  <input {...register("password",{ required: true })}   type="password" className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-10 placeholder:text-slate-600" placeholder="Ingrese su contraña"/>
+                  <input {...register("password",{ 
+                      required: "Este espacio es requerido",
+                      minLength: {
+                        value: 8,
+                        message: "La contraseña debe tener al menos 8 caracteres"
+                      },
+                      pattern: {
+                        value: /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$/,
+                        message: "La contraseña debe tener al menos una mayúscula, un número y un carácter especial"
+                      }
+                    })}   type="password" className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-10 placeholder:text-slate-600" placeholder="Ingrese su contraseña"/>
                   <CgPassword className="w-7 absolute top-[10px] left-1 text-slate-800"/>
-                  {errors.password && <span className="text-[#ff0000] text-xs">Este espacio es requerido</span>}
+                  {errors.password && <span className="text-[#ff0000] text-xs">{errors.password.message}</span>}
                 </div>
               </div>
               <div className="flex items-center flex-col">
                 <div className=" relative">
-                  <select {...register("rol",{ required: true })}  id="countries" className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-3">
+                  <select {...register("rol",{ required: "Este espacio es requerido" })}  id="countries" className="bg-neutral-300 border rounded w-[240px] outline-none h-9 pl-3">
                     <option  value="admin">Administrador</option>
                     <option value="cajero">Cajero</option>
                   </select>
@@ -160,8 +169,9 @@ const FormNewEmployed = () =>{
             </div>
           </div>
         </form>
-           )}
-      </div>
-      );
-}
+      )}
+    </div>
+  );
+};
+
 export default FormNewEmployed;
