@@ -1,12 +1,16 @@
 
 
-CREATE TABLE pedido_producto (
-  id_pedido INT NOT NULL,
-  id_producto INT NOT NULL,
-  cantidad_producto INT DEFAULT NULL,
-  valor_unitario INT DEFAULT NULL,
-  PRIMARY KEY (id_pedido, id_producto),
-  KEY id_producto (id_producto),
-  CONSTRAINT pedido_producto_ibfk_1 FOREIGN KEY (id_pedido) REFERENCES pedido (id),
-  CONSTRAINT pedido_producto_ibfk_2 FOREIGN KEY (id_producto) REFERENCES producto (id)
+CREATE TABLE producto (
+  id INT NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(255) DEFAULT NULL,
+  descripcion TEXT,
+  categoria VARCHAR(100) DEFAULT NULL,
+  imagen TEXT,
+  precio INT DEFAULT NULL,
+  PRIMARY KEY (id)
 );
+
+INSERT INTO restaurante.producto
+( nombre, descripcion, categoria, imagen, precio)
+VALUES('Tlayudas', 'La tlayuda, también conocida como clayuda ', 'platos fuertes', '/img/menu/1712696800930_Tlayudas.jpeg', 25000);
+

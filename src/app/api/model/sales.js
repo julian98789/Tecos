@@ -6,7 +6,7 @@ export const insertSales = async  (data) =>{
     let sql = null;
     try {
         const {fecha, valor_total, pedido_id, cliente } = data; 
-        sql = `INSERT INTO  ventas (fecha, valor_total, pedido_id, cliente) VALUE ('${fecha}', '${valor_total}', '${pedido_id}', '${cliente}' )`; 
+        sql = `INSERT INTO  venta (fecha, valor_total, pedido_id, cliente) VALUE ('${fecha}', '${valor_total}', '${pedido_id}', '${cliente}' )`; 
           
         await pool.query(sql);
         
@@ -32,7 +32,7 @@ export const selectSales = async () =>{
     let error = false
    
     try{
-        let sql = 'SELECT  * FROM  ventas'
+        let sql = 'SELECT  * FROM  venta'
         let [rows] = await pool.query(sql);
         result =rows
     }catch (err){
@@ -55,7 +55,7 @@ export const selectSalesId = async (id) =>{
     let result =false;
     let error = false
     try{
-        let sql = `SELECT * FROM ventas WHERE  id  = '${id}'`
+        let sql = `SELECT * FROM venta WHERE  id  = '${id}'`
         let [rows] = await pool.query(sql);
         result =rows
     }catch (err){
@@ -83,7 +83,7 @@ export const updateSales =  async (id,data) =>{
     for(const campo in data){
         updates.push(`${campo} = '${data[campo]}'`)
     }
-    let sql = `UPDATE ventas  SET ${updates.join(', ')} WHERE id = ${id}  `; 
+    let sql = `UPDATE venta  SET ${updates.join(', ')} WHERE id = ${id}  `; 
    
     try {  
         await pool.query(sql);
@@ -110,7 +110,7 @@ export const deleteSales = async (id) =>{
     
     let status = false;
     let error = false
-    let sql = `DELETE FROM ventas WHERE  id  = '${id}'`
+    let sql = `DELETE FROM venta WHERE  id  = '${id}'`
     try{
         await pool.query(sql);
         status = true

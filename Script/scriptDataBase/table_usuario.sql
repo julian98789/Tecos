@@ -1,16 +1,17 @@
 
 
-CREATE TABLE producto (
-  id INT NOT NULL AUTO_INCREMENT,
-  nombre VARCHAR(255) DEFAULT NULL,
-  descripcion TEXT,
-  categoria VARCHAR(100) DEFAULT NULL,
-  imagen TEXT,
-  precio INT DEFAULT NULL,
-  PRIMARY KEY (id)
+CREATE TABLE usuarios (
+  nombre VARCHAR(22) DEFAULT NULL,
+  apellido VARCHAR(22) DEFAULT NULL,
+  cedula INT NOT NULL,
+  correo VARCHAR(40) NOT NULL,
+  contrasena VARCHAR(44) DEFAULT NULL,
+  rol ENUM('admin','cajero') DEFAULT NULL,
+  PRIMARY KEY (cedula),
+  UNIQUE KEY correo (correo)
 );
 
-INSERT INTO restaurante.producto
-( nombre, descripcion, categoria, imagen, precio)
-VALUES('Tlayudas', 'La tlayuda, también conocida como clayuda ', 'platos fuertes', '/img/menu/1712696800930_Tlayudas.jpeg', 25000);
+
+INSERT INTO usuarios (nombre, apellido, cedula, correo, contrasena, rol)
+VALUES ('Julian', 'Gomez', 123456789, 'juan@example.com', 'Contr@seña123', 'admin');
 
