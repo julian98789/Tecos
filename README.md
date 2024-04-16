@@ -31,14 +31,14 @@ This is my first project using Next.js, Node.js, and Tailwind CSS. As a database
 1. Clone this repository to your local machine.
 2. Install dependencies using `npm install`.
 3. Configure your connection to the database using the following code as an example::
-   ```javascript
-const pool = mysql2.createPool({
+    ```javascript
+    const pool = mysql2.createPool({
      host: "Your host",
      user: "Your user",
      database: "The name of your database",
      password: "Your password",
      port: "Your port"
-})
+    })
 5. Run the server using `npm run dev`.
 6. Access the website from your preferred browser at `localhost:3000`.
 
