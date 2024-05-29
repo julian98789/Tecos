@@ -10,6 +10,6 @@ CREATE TABLE pedido (
   mesa_id INT DEFAULT NULL,
   PRIMARY KEY (id),
   KEY mesa_id (mesa_id),
-  CONSTRAINT pedido_ibfk_1 FOREIGN KEY (mesa_id) REFERENCES mesa (id),
+  CONSTRAINT pedido_ibfk_1 FOREIGN KEY (mesa_id) REFERENCES mesa (id)
 ) ;
 
