@@ -2,14 +2,13 @@ import pool from "@/db/MysqlConection";
 
 import fs from 'fs';
 import path from 'path';
-
 export const insertProducts = async (data) => {
     let result = true;
     let error = null;
     let sql = null;
 
     try {
-        const { nombre, descripcion, categoria, imagen, precio } = data;
+        const { nombre, descripcion, categoria, imagen, precio, estado } = data;
 
         // Guardar la imagen en el directorio 'uploads'
         const timestamp = Date.now();
@@ -22,7 +21,7 @@ export const insertProducts = async (data) => {
         const urlImagen = `/img/menu/${nombreImagen}`;
 
         // Insertar los datos en la base de datos
-        sql = `INSERT INTO productos (nombre, descripcion, categoria, imagen, precio) VALUES ('${nombre}', '${descripcion}', '${categoria}', '${urlImagen}', '${precio}')`;
+        sql = `INSERT INTO productos (nombre, descripcion, categoria, imagen, precio, estado) VALUES ('${nombre}', '${descripcion}', '${categoria}', '${urlImagen}', '${precio}', '${estado}')`;
         await pool.query(sql);
         fs.writeFileSync(rutaImagen, imagenBuffer);
     } catch (err) {
