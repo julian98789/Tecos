@@ -10,7 +10,7 @@ import {FiShoppingCart} from 'react-icons/fi';
 import useCart  from '@/hook/useCart';
 import MenuShopping from '@/components/custom/MenuCliente/MenuShopping/MenuShopping';
 import { Sheet, SheetTrigger,SheetContent,SheetClose,SheetFooter,SheetDescription,SheetHeader,SheetTitle } from '@/components/ui/sheet';
-import { FiX } from 'react-icons/fi';
+
 
 
 const PgMenu = () => {
@@ -21,10 +21,7 @@ const PgMenu = () => {
   const { getCart,clearCart } = useCart();
   console.log(getCart())
   
-  /*if(getCart().length === 0){
-    window.location.href = '/';
-  }
-  */
+
   
   const recibirDatos = async () => {
     const response = await fetch(url);

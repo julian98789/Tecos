@@ -69,11 +69,11 @@ export const selectOrder = async () => {
         GROUP_CONCAT(pr.descripcion) AS descripciones_productos,
         GROUP_CONCAT(pr.categoria) AS categorias_productos,
         GROUP_CONCAT(pr.precio) AS precios_productos
- FROM pedido p
- JOIN pedido_producto pp ON p.id = pp.id_pedido
- JOIN productos pr ON pp.id_producto = pr.id
- JOIN mesa m ON p.mesa_id = m.id
- GROUP BY p.id;
+        FROM pedido p
+        JOIN pedido_producto pp ON p.id = pp.id_pedido
+        JOIN productos pr ON pp.id_producto = pr.id
+        JOIN mesa m ON p.mesa_id = m.id
+        GROUP BY p.id;
         `;
         let [rows] = await pool.query(sql);
         result = rows;

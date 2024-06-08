@@ -17,6 +17,7 @@ const FormNewProduct = () =>{
         handleSubmit,
         watch,
         formState: { errors },
+        reset
     } = useForm();
     
     const enviarDatos = async (dataUser) =>{ 
@@ -94,7 +95,7 @@ const FormNewProduct = () =>{
       const processData = (data) => {
         if (data) {
           exito()
-          console.log(data.result)
+          reset()
         }else{
           error()
         }

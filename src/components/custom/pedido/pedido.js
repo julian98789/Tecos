@@ -30,6 +30,8 @@ const Pedidos = () => {
     // Encontrar mesas únicas
     const mesasUnicas = [...new Set(order.map(item => item.mesa_id))].sort((a, b) => a - b);
 
+
+
     return (
         <div>
             <p className="text-2xl text-neutral-100 italic font-semibold mb-2 text-center p-5">Liberar mesas</p>

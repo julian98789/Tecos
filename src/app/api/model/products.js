@@ -144,31 +144,43 @@ export const updateProducts =  async (id,data) =>{
     return response
 }
 
-export const deleteProducts = async (id) =>{
-    console.log(id)
-    
+export const deleteProducts = async (id) => {
     let status = false;
-    let error = false
-    let sql = `DELETE FROM productos WHERE  id  = '${id}'`
-    try{
-        
-        await pool.query(sql);
-        status = true
-    }catch (err){
+    let error = false;
+    let sql = `SELECT imagen FROM productos WHERE id = '${id}'`;
+    let imagenURL = null;
+
+    try {
+        // Obtener la URL de la imagen antes de eliminar el producto
+        const [result] = await pool.query(sql);
+        imagenURL = result[0].imagen;
+
+        // Eliminar el producto de la base de datos
+        await pool.query(`DELETE FROM productos WHERE id = '${id}'`);
+
+        // Eliminar la imagen del directorio si existe
+        if (imagenURL) {
+            const rutaImagen = path.join(__dirname, `../../../../../public${imagenURL}`);
+            fs.unlinkSync(rutaImagen); // Eliminar la imagen del directorio
+        }
+
+        status = true;
+    } catch (err) {
         error = {
-            "sql" : sql,
-            "description": err
-        } 
+            sql: sql,
+            description: err.message,
+        };
+        console.log(error);
     }
-    
+
     let response = {
-        "preocess": 'delete products',
-        "status": status,
-        "error": error
-    }
-    
+        process: 'delete products',
+        status: status,
+        error: error,
+    };
+
     return response;
-}
+};
 
 
 
