@@ -53,9 +53,6 @@ This is my first project using Next.js, Node.js, and Tailwind CSS. As a database
 4. **create_table_productos.sql**: Creates a table named "productos" in the database, used to store information about products available in the restaurant.
 5. **create_table_pedido_producto.sql**: Creates a table named "pedido_producto" in the database, used to establish the relationship between orders and products.
 
-## Contributors:
 
-- [KeniBeck](https://github.com/KeniBeck)
-- [YeferRivera](https://github.com/YeferRivera)
 
 
