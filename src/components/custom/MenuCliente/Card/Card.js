@@ -1,23 +1,39 @@
 'use client'
 import React, { useState } from "react";
 import useCart from "@/hook/useCart";
+import Swal from "sweetalert2";
 
-const Card = ({ product , onAddToCart}) => {
-    const { addToCart,getCart } = useCart();
+const Card = ({ product, onAddToCart }) => {
+    const { addToCart, getCart } = useCart();
     const [cantidad, setCantidad] = useState(1); // Estado para almacenar la cantidad del producto
-    
+
     const handleChange = (event) => {
         // Actualiza la cantidad cuando cambia el valor del campo de entrada
         setCantidad(parseInt(event.target.value));
     };
 
+    const error = () => {
+        Swal.fire({
+            position: 'center',
+            title: 'Perdon',
+            text: 'El producto esta agotado',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
+
     const handleClick = () => {
+        if (product.estado === 'agotado') {
+           error()
+            return;
+        }
+
         // Agrega el producto al carrito con la cantidad seleccionada
         addToCart({ ...product, cantidad });
         setCantidad(1);
         onAddToCart();
     };
-  
 
     return (
         <div className="relative h-[425px] bg-neutral-800 rounded-md shadow-md text-neutral-100 p-4 w-60">
@@ -37,11 +53,16 @@ const Card = ({ product , onAddToCart}) => {
                     className="rounded-md p-2 mr-2 w-28 bg-neutral-900 border border-white "
                     placeholder="Cantidad"
                 />
-                <button className="bg-blue-500 hover:bg-blue-700 text-white rounded-md px-4 py-2" onClick={handleClick}>Agregar</button>
+                <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white rounded-md px-4 py-2"
+                    onClick={handleClick}
+                   
+                >
+                    Agregar
+                </button>
             </div>
         </div>
     );
 };
 
 export default Card;
-

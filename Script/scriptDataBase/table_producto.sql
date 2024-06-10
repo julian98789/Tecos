@@ -7,10 +7,11 @@ CREATE TABLE producto (
   categoria VARCHAR(100) DEFAULT NULL,
   imagen TEXT,
   precio INT DEFAULT NULL,
+  estado ENUM('activo', 'agotado') DEFAULT 'activo',
   PRIMARY KEY (id)
 );
 
-INSERT INTO restaurante.producto
-( nombre, descripcion, categoria, imagen, precio)
-VALUES('Tlayudas', 'La tlayuda, también conocida como clayuda ', 'platos fuertes', '/img/menu/1712696800930_Tlayudas.jpeg', 25000);
-
+-- Insertar un nuevo producto
+INSERT INTO producto
+(nombre, descripcion, categoria, imagen, precio, estado)
+VALUES('Tlayudas', 'La tlayuda, también conocida como clayuda ', 'platos fuertes', '/img/menu/1712696800930_Tlayudas.jpeg', 25000, 'activo');

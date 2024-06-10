@@ -69,7 +69,7 @@ const cartItemCount = cartItemsWithoutMesa.length;
                    
                 </div>
                 <SheetTrigger>
-                  <div className="absolute bottom-8 right-12 bg-slate-800 h-[40px] w-[40px]  rounded-full"> {/* Ajusta el right para cambiar la posición horizontal */}
+                  <div className="absolute bottom-8 right-12 bg-slate-800 h-[40px] w-[40px]  rounded-full">
                     <div className="relative text-white">
                       <FiShoppingCart size={24} className='text-white h-8 w-8' variant="outline" />
                       {cartItemCount > 0 && (
