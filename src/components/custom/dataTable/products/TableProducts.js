@@ -4,7 +4,7 @@ import { useState } from "react";
 import { IoSaveSharp } from "react-icons/io5";
 import { MdCancel } from "react-icons/md";
 
-const TableProducts = ({ products, eliminarProducto, actualizarProducto }) => {
+const TableProducts = ({ products, actualizarProducto }) => {
     const [editMode, setEditMode] = useState(false);
     const [editedProduct, setEditedProduct] = useState({ ...products });
 
@@ -12,27 +12,27 @@ const TableProducts = ({ products, eliminarProducto, actualizarProducto }) => {
         const { name, value } = e.target;
         setEditedProduct({ ...editedProduct, [name]: value });
     };
+
     const exito = () => {
-      Swal.fire({
-          position: 'top-center',
-          icon: 'success',
-          title: 'Producto actualizado exitosamente',
-          showConfirmButton: false,
-          timer: 1500
-      });
-  };
+        Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Producto actualizado exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    };
 
-  const error = () => {
-      Swal.fire({
-          position: 'top-center',
-          title: 'Error',
-          text: 'Se ha detectado un error al actualizar el producto',
-          icon: 'error',
-          showConfirmButton: false,
-          timer: 2500
-      });
-  };
-
+    const error = () => {
+        Swal.fire({
+            position: 'top-center',
+            title: 'Error',
+            text: 'Se ha detectado un error al actualizar el producto',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2500
+        });
+    };
 
     const handleUpdateClick = async () => {
         const options = {
@@ -55,7 +55,7 @@ const TableProducts = ({ products, eliminarProducto, actualizarProducto }) => {
             }
         } catch (error) {
             console.error('Error updating product:', error);
-           
+            error();
         }
     };
 
@@ -99,70 +99,89 @@ const TableProducts = ({ products, eliminarProducto, actualizarProducto }) => {
         });
     };
 
-    
+    const eliminarProducto = async (productId) => {
+        const options = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: productId })
+        };
+        
+        try {
+            const response = await fetch(`/api/products/${productId}`, options);
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error deleting product:', error);
+            throw error;
+        }
+    };
+
     return (
         <div className="flex justify-center">
             {editMode ? (
-                <div className="flex items-center  bg-slate-50 rounded-lg p-2 border-2 border-neutral-900 ">
-                    <div className="w-32 px-4 py-4 ">{products.id}</div>
+                <div className="flex items-center bg-slate-50 rounded-lg p-2 border-2 border-neutral-900">
+                    <div className="w-32 px-4 py-4">{products.id}</div>
                     <input
                         type="text"
                         name="nombre"
                         value={editedProduct.nombre}
                         onChange={handleInputChange}
-                        className="w-40 px-1 py-2 bg-slate-50   outline-none"
+                        className="w-40 px-1 py-2 bg-slate-50 outline-none"
                     />
-                     <input
+                    <input
                         type="text"
                         name="descripcion"
                         value={editedProduct.descripcion}
                         onChange={handleInputChange}
-                        className="w-36 px-4 py-2 bg-slate-50   outline-none"
+                        className="w-36 px-4 py-2 bg-slate-50 outline-none"
                     />
                     <input
                         type="number"
                         name="precio"
                         value={editedProduct.precio}
                         onChange={handleInputChange}
-                        className="w-24 px-1 py-2 bg-slate-50   outline-none"
+                        className="w-24 px-1 py-2 bg-slate-50 outline-none"
                     />
-                    <input
-                        type="text"
+                    <select
                         name="categoria"
                         value={editedProduct.categoria}
                         onChange={handleInputChange}
-                        className="w-36 px-4 py-2 bg-slate-50   outline-none"
-                    />
+                        className="w-36 px-4 py-2 bg-slate-50 outline-none"
+                    >
+                        <option value="entrada">entradas</option>
+                        <option value="plato fuerte">platos fuertes</option>
+                        <option value="bebida">bebidas</option>
+                    </select>
                     <input
                         type="text"
                         name="imagen"
                         value={editedProduct.imagen}
-                        onChange={handleInputChange}
-                        className="w-64 px-1 py-2 bg-slate-50   outline-none"
+                        disabled
+                        className="w-64 px-1 py-2 bg-slate-50 outline-none"
                     />
-                   
-                    <div className="w-24 px-4 py-4 ">{products.estado}</div>
-                    <button onClick={handleUpdateClick} className="w-24 px-4 py-4 bg-slate-50 overflow-hidden  text-neutral-800 hover:neutral-500">
+                    <div className="w-24 px-4 py-4">{products.estado}</div>
+                    <button onClick={handleUpdateClick} className="w-24 px-4 py-4 bg-slate-50 overflow-hidden text-neutral-800 hover:neutral-500">
                         <IoSaveSharp className="text-2xl text-neutral-800 hover:text-green-700" />
-                    
                     </button>
-                    <button onClick={handleCancelClick} className="w-28 px-4 py-4 bg-slate-50 overflow-hidden  text-neutral-800 hover:neutral-500">
-                        <MdCancel className="text-2xl text-neutral-800 hover:text-red-600 " />
+                    <button onClick={handleCancelClick} className="w-28 px-4 py-4 bg-slate-50 overflow-hidden text-neutral-800 hover:neutral-500">
+                        <MdCancel className="text-2xl text-neutral-800 hover:text-red-600" />
                     </button>
                 </div>
             ) : (
                 <div className="flex justify-center">
-                    <div className="w-8 px-2 py-4 bg-slate-50  ">{products.id}</div>
-                    <div className="w-40 px-1 py-4 bg-slate-50  ">{products.nombre}</div>
-                    <div className="w-56 px-1 py-4 bg-slate-50  break-word">{products.descripcion}  </div>
-                    <div className="w-24 px-1 py-4 bg-slate-50  ">{products.precio}</div>
-                    <div className="w-36 px-4 py-4 bg-slate-50  ">{products.categoria}</div>
-                    <div className="w-64 px-1 py-4 bg-slate-50  ">{products.imagen}</div>
-                    <div className="w-24 px-4 py-4 bg-slate-50  ">{products.estado}</div>
-                    <button onClick={handleEditClick} className="flex justify-center w-24 px-4 py-4 bg-slate-50 overflow-hidden  text-neutral-800 hover:neutral-500">
+                    <div className="w-8 px-2 py-4 bg-slate-50">{products.id}</div>
+                    <div className="w-40 px-1 py-4 bg-slate-50">{products.nombre}</div>
+                    <div className="w-56 px-1 py-4 bg-slate-50 break-word">{products.descripcion}</div>
+                    <div className="w-24 px-1 py-4 bg-slate-50">{products.precio}</div>
+                    <div className="w-36 px-4 py-4 bg-slate-50">{products.categoria}</div>
+                    <div className="w-64 px-1 py-4 bg-slate-50">{products.imagen}</div>
+                    <div className="w-24 px-4 py-4 bg-slate-50">{products.estado}</div>
+                    <button onClick={handleEditClick} className="flex justify-center w-24 px-4 py-4 bg-slate-50 overflow-hidden text-neutral-800 hover:neutral-500">
                         <IoMdCreate className="hover:text-neutral-600" />
                     </button>
-                    <button onClick={handleDeleteClick} className="flex justify-center w-24 px-4 py-4 bg-slate-50 overflow-hidden  text-neutral-800 hover:neutral-500">
+                    <button onClick={handleDeleteClick} className="flex justify-center w-24 px-4 py-4 bg-slate-50 overflow-hidden text-neutral-800 hover:neutral-500">
                         <IoMdRemoveCircle className="hover:text-neutral-600" />
                     </button>
                 </div>
