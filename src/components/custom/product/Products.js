@@ -36,7 +36,7 @@ return (
         </div>
     ) : (
         <div>
-            <div className="mt-11 mr-64 w-full">
+            <div className="mt-11 ">
                 <CamposTable />
             </div>
             <div className="flex flex-col">

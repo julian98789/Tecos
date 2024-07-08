@@ -104,65 +104,65 @@ const TableProducts = ({ products, eliminarProducto, actualizarProducto }) => {
         <div className="flex justify-center">
             {editMode ? (
                 <div className="flex items-center  bg-slate-50 rounded-lg p-2 border-2 border-neutral-900 ">
-                    <div className="w-32 px-4 py-4 break-all">{products.id}</div>
+                    <div className="w-32 px-4 py-4 ">{products.id}</div>
                     <input
                         type="text"
                         name="nombre"
                         value={editedProduct.nombre}
                         onChange={handleInputChange}
-                        className="w-40 px-1 py-2 bg-slate-50 overflow-auto break-all outline-none"
+                        className="w-40 px-1 py-2 bg-slate-50   outline-none"
                     />
                      <input
                         type="text"
                         name="descripcion"
                         value={editedProduct.descripcion}
                         onChange={handleInputChange}
-                        className="w-36 px-4 py-2 bg-slate-50 overflow-auto break-all outline-none"
+                        className="w-36 px-4 py-2 bg-slate-50   outline-none"
                     />
                     <input
                         type="number"
                         name="precio"
                         value={editedProduct.precio}
                         onChange={handleInputChange}
-                        className="w-24 px-1 py-2 bg-slate-50 overflow-auto break-all outline-none"
+                        className="w-24 px-1 py-2 bg-slate-50   outline-none"
                     />
                     <input
                         type="text"
                         name="categoria"
                         value={editedProduct.categoria}
                         onChange={handleInputChange}
-                        className="w-36 px-4 py-2 bg-slate-50 overflow-auto break-all outline-none"
+                        className="w-36 px-4 py-2 bg-slate-50   outline-none"
                     />
                     <input
                         type="text"
                         name="imagen"
                         value={editedProduct.imagen}
                         onChange={handleInputChange}
-                        className="w-64 px-1 py-2 bg-slate-50 overflow-auto break-all outline-none"
+                        className="w-64 px-1 py-2 bg-slate-50   outline-none"
                     />
                    
-                    <div className="w-24 px-4 py-4 break-all">{products.estado}</div>
-                    <button onClick={handleUpdateClick} className="w-24 px-4 py-4 bg-slate-50 overflow-hidden break-all text-neutral-800 hover:neutral-500">
-                        <IoSaveSharp className="text-2xl text-green-500 hover:text-green-600" />
+                    <div className="w-24 px-4 py-4 ">{products.estado}</div>
+                    <button onClick={handleUpdateClick} className="w-24 px-4 py-4 bg-slate-50 overflow-hidden  text-neutral-800 hover:neutral-500">
+                        <IoSaveSharp className="text-2xl text-neutral-800 hover:text-green-700" />
                     
                     </button>
-                    <button onClick={handleCancelClick} className="w-28 px-4 py-4 bg-slate-50 overflow-hidden break-all text-neutral-800 hover:neutral-500">
-                        <MdCancel className="text-2xl text-red-500 hover:text-red-600 " />
+                    <button onClick={handleCancelClick} className="w-28 px-4 py-4 bg-slate-50 overflow-hidden  text-neutral-800 hover:neutral-500">
+                        <MdCancel className="text-2xl text-neutral-800 hover:text-red-600 " />
                     </button>
                 </div>
             ) : (
                 <div className="flex justify-center">
-                    <div className="w-16 px-4 py-4 bg-slate-50 overflow-auto break-all">{products.id}</div>
-                    <div className="w-40 px-1 py-4 bg-slate-50 overflow-auto break-all">{products.nombre}</div>
-                    <div className="w-56 px-1 py-4 bg-slate-50 overflow-auto break-word">{products.descripcion}  </div>
-                    <div className="w-24 px-1 py-4 bg-slate-50 overflow-auto break-all">{products.precio}</div>
-                    <div className="w-36 px-4 py-4 bg-slate-50 overflow-auto break-all">{products.categoria}</div>
-                    <div className="w-64 px-1 py-4 bg-slate-50 overflow-auto break-all">{products.imagen}</div>
-                    <div className="w-24 px-4 py-4 bg-slate-50 overflow-auto break-all">{products.estado}</div>
-                    <button onClick={handleEditClick} className="flex justify-center w-24 px-4 py-4 bg-slate-50 overflow-hidden break-all text-neutral-800 hover:neutral-500">
+                    <div className="w-8 px-2 py-4 bg-slate-50  ">{products.id}</div>
+                    <div className="w-40 px-1 py-4 bg-slate-50  ">{products.nombre}</div>
+                    <div className="w-56 px-1 py-4 bg-slate-50  break-word">{products.descripcion}  </div>
+                    <div className="w-24 px-1 py-4 bg-slate-50  ">{products.precio}</div>
+                    <div className="w-36 px-4 py-4 bg-slate-50  ">{products.categoria}</div>
+                    <div className="w-64 px-1 py-4 bg-slate-50  ">{products.imagen}</div>
+                    <div className="w-24 px-4 py-4 bg-slate-50  ">{products.estado}</div>
+                    <button onClick={handleEditClick} className="flex justify-center w-24 px-4 py-4 bg-slate-50 overflow-hidden  text-neutral-800 hover:neutral-500">
                         <IoMdCreate className="hover:text-neutral-600" />
                     </button>
-                    <button onClick={handleDeleteClick} className="flex justify-center w-24 px-4 py-4 bg-slate-50 overflow-hidden break-all text-neutral-800 hover:neutral-500">
+                    <button onClick={handleDeleteClick} className="flex justify-center w-24 px-4 py-4 bg-slate-50 overflow-hidden  text-neutral-800 hover:neutral-500">
                         <IoMdRemoveCircle className="hover:text-neutral-600" />
                     </button>
                 </div>

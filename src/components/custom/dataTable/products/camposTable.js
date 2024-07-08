@@ -4,12 +4,14 @@ const CamposTable = () => {
       
     <div className="flex justify-center ">
         <div className="w-16  px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word ">id  </div>
-        <div className="w-52 px- py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word">nombre  </div>
+        <div className="w-32 px- py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word">nombre  </div>
         <div className="w-56 px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word">descripcion  </div>
+        <div className="w-24 px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word">precio  </div>
         <div className="w-36 px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word">categoria  </div>
         <div className="w-64 px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word text-center ">imagen  </div>
-        <div className="w-24 px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word">precio  </div>
-        <div className="w-24 px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word">Eliminar  </div>
+        <div className="w-24 px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word">Estado  </div>
+        <div className="w-24 px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word">actualizar  </div>
+        <div className="w-24 space-x-4 px-4 py-4 bg-neutral-800 text-neutral-50 overflow-hidden break-word">Eliminar  </div>
     </div>
 
      );
